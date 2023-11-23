@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<title>Sparadrap Web Application</title>
+
+<style>
+body {
+	padding-top: 50px;
+}
+
+.special {
+	padding-top: 50px;
+}
+</style>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href=".">Système de gestion Sparadrap</a>
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container special">
+
+		<h2 class="h2">Ajout d'un nouvel employée</h2>
+		<div>
+			<form method="post"
+				th:action="@{/saveAdresse}" th:object="${adresse}">
+				<div class="form-group">
+					<input
+						type="hidden" th:field="*{Adr_ID}" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="Adr_Numero_RueInput">Numéro de Rue</label> 
+					<input
+						type="text" th:field="*{Adr_Numero_Rue}" class="form-control" id="Adr_Numero_RueInput"
+						aria-describedby="Adr_Numero_RueHelp" placeholder="Saisir le Numéro de Rue"> <small
+						id="Adr_Numero_RueHelp" class="form-text text-muted">Merci d'écrire le Numéro de Rue de l'adresse.</small>
+				</div>
+				<div class="form-group">
+					<label for="Adr_Nom_RueInput">Nom de Rue</label> 
+					<input
+						type="text" th:field="*{Adr_Nom_Rue}" class="form-control" id="Adr_Nom_RueInput"
+						aria-describedby="Adr_Nom_RueHelp" placeholder="Saisir le Nom de Rue"> <small
+						id="Adr_Nom_RueHelp" class="form-text text-muted">Merci d'écrire le Nom de Rue de l'adresse.</small>
+				</div>
+				<div class="form-group">
+					<label for="Adr_Code_PostalInput">Code Postal</label> 
+					<input
+						type="text" th:field="*{Adr_Code_Postal}" class="form-control" id="Adr_Code_PostalInput"
+						aria-describedby="Adr_Code_PostalHelp" placeholder="Saisir le Code Postal"> <small
+						id="Adr_Code_PostalHelp" class="form-text text-muted">Merci d'écrire le Code Postal de l'adresse</small>
+				</div>
+				<div class="form-group">
+					<label for="Adr_VilleInput">Nom de la Ville</label> 
+					<input
+						type="text" th:field="*{Adr_Ville}" class="form-control" id="Adr_VilleInput"
+						aria-describedby="Adr_VilleHelp" placeholder="Saisir le Nom de la Ville"> <small
+						id="Adr_VilleHelp" class="form-text text-muted">Merci d'écrire le Nom de la Ville.</small>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Créer</button>
+			</form>
+		</div>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>
