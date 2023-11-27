@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
@@ -16,8 +18,12 @@ public class Achat {
 	
 	private String Achat_Date;
 
+	@ManyToOne
+	@JoinColumn(name="Cli_ID")
 	private Client	Client;
 
+	@ManyToOne
+	@JoinColumn(name="Ord_ID")
 	private Ordonnance Ordonnance;
 	
 }

@@ -17,8 +17,8 @@ public class AdresseService {
 	@Autowired 
 	AdresseRepository  adresseRepository;
 	
-	public Optional<Adresse> getAdresse(final Long id) {
-		return adresseRepository.findById(id);
+	public Adresse getAdresse(final long id) {
+		return adresseRepository.findById(id).get();
 	}
 	
 	public Iterable<Adresse> getAdresse() {

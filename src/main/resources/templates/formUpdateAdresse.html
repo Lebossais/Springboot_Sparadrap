@@ -48,39 +48,38 @@ body {
 				th:action="@{/saveAdresse}" th:object="${adresse}">
 				<div class="form-group">
 					<input
-						type="hidden" th:field="*{id}" class="form-control">
+						type="hidden" field="*{Adr_Id}" class="form-control">
 				</div>
 				<div class="form-group">
 					<label for="Adr_Numero_RueInput">Numéro de Rue</label> 
 					<input
-						type="text" th:field="*{Adr_Numero_Rue}" class="form-control" id="Adr_Numero_RueInput"
+						type="text" field="*{Adr_Numero_Rue}" class="form-control" id="Adr_Numero_RueInput"
 						aria-describedby="Adr_Numero_RueHelp" placeholder="Saisir le Numéro de Rue"> <small
 						id="Adr_Numero_RueHelp" class="form-text text-muted">Merci d'écrire le Numéro de Rue de l'adresse.</small>
 				</div>
 				<div class="form-group">
 					<label for="Adr_Nom_RueInput">Nom de Rue</label> 
 					<input
-						type="text" th:field="*{Adr_Nom_Rue}" class="form-control" id="Adr_Nom_RueInput"
+						type="text" field="*{Adr_Nom_Rue}" class="form-control" id="Adr_Nom_RueInput"
 						aria-describedby="Adr_Nom_RueHelp" placeholder="Saisir le Nom de Rue"> <small
-						id="Adr_Nom_RueHelp" class="form-text text-muted">Merci d'écrire le Nom de Rue de l'adresse'.</small>
+						id="Adr_Nom_RueHelp" class="form-text text-muted">Merci d'écrire le Nom de Rue de l'adresse.</small>
 				</div>
 				<div class="form-group">
 					<label for="Adr_Code_PostalInput">Code Postal</label> 
 					<input
-						type="text" th:field="*{Adr_Code_Postal}" class="form-control" id="Adr_Code_PostalInput"
+						type="text" field="*{Adr_Code_Postal}" class="form-control" id="Adr_Code_PostalInput"
 						aria-describedby="Adr_Code_PostalHelp" placeholder="Saisir le Code Postal"> <small
 						id="Adr_Code_PostalHelp" class="form-text text-muted">Merci d'écrire le Code Postal de l'adresse</small>
 				</div>
-				</div>
 				<div class="form-group">
-					<label for="Adr_VilleInput">Ville</label> 
+					<label for="Adr_VilleInput">Nom de la Ville</label> 
 					<input
-						type="text" th:field="*{Adr_Ville}" class="form-control" id="Adr_VilleInput"
-						aria-describedby="Adr_VilleHelp" placeholder="Saisir le nom de la Ville"> <small
-						id="Adr_VilleHelp" class="form-text text-muted">Merci d'écrire le Nom de la Ville</small>
+						type="text" field="*{Adr_Ville}" class="form-control" id="Adr_VilleInput"
+						aria-describedby="Adr_VilleHelp" placeholder="Saisir le Nom de la Ville"> <small
+						id="Adr_VilleHelp" class="form-text text-muted">Merci d'écrire le Nom de la Ville.</small>
 				</div>
 				
-				<button type="submit" class="btn btn-primary">Modifier</button>
+				<button type="submit" class="btn btn-primary">Créer</button>
 			</form>
 		</div>
 

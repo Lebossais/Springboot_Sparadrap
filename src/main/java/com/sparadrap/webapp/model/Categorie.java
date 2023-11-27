@@ -13,5 +13,6 @@ public class Categorie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Cat_ID;
+	
 	private String Cat_Categorie;
 }
