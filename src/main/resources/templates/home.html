@@ -65,14 +65,14 @@
 						<td><span th:text="${adresse.Adr_Code_Postal}"> Code Postal </span></td>
 						<td><span th:text="${adresse.Adr_Ville}"> Ville </span></td>
 						<td>
-							<a th:href="@{/updateAdresse/{id}(id=${adresse.Adr_ID})}"><button class="btn btn-info">Modifier</button></a>
+							<a th:href="@{/editAdresse/{id}(id=${adresse.Adr_ID})}"><button class="btn btn-info">Modifier</button></a>
 							<a th:href="@{/deleteAdresse/{id}(id=${adresse.Adr_ID})}"><button class="btn btn-danger">Supprimer</button></a>						
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<h4><a th:href="@{/createAdresse}">Ajouter une nouvelle Adresse</a></h4>
+		<h4><a th:href="@{/signupAdresse}">Ajouter une nouvelle Adresse</a></h4>
 
 	</div>
 

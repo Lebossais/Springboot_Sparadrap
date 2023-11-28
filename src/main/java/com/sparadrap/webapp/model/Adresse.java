@@ -1,7 +1,6 @@
 package com.sparadrap.webapp.model;
 
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,6 +9,7 @@ import lombok.Data;
 
 @Data
 @Entity
+
 public class Adresse {
 
 	@Id
@@ -20,8 +20,6 @@ public class Adresse {
 	
 	private String Adr_Nom_Rue;
 	
-	@NotNull
-	@Pattern(regexp = "^[0-9]{3}$", message="CCV is 3 digits")
 	private int Adr_Code_Postal;
 	
 	private String Adr_Ville;
