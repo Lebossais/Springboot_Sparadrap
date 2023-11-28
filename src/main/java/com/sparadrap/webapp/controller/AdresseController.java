@@ -26,13 +26,13 @@ public class AdresseController {
 	    
 	@GetMapping("/signupAdresse")
     public String showSignUpForm(Adresse adresse) {
-        return "formNewAdresse";
+        return "form-new/formNewAdresse";
     }
 	
 	    @PostMapping("/addAdresse")
 	    public String addAdresse(Adresse adresse, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	            return "formNewAdresse";
+	            return "form-new/formNewAdresse";
 	        }
 	        
 	        adresseService.saveAdresse(adresse);
@@ -44,7 +44,7 @@ public class AdresseController {
 	    	Iterable<Adresse> listAdresse = adresseService.getAdresse();
 	        model.addAttribute("listAdresse", listAdresse);
 	        
-	        return "listAdresse";
+	        return "list/listAdresse";
 	    }
 	    
 	    @GetMapping("/editAdresse/{id}")
