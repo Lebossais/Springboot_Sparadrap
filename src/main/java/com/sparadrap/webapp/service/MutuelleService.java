@@ -1,7 +1,5 @@
 package com.sparadrap.webapp.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +15,8 @@ public class MutuelleService {
 	@Autowired 
 	MutuelleRepository  mutuelleRepository;
 	
-	public Optional<Mutuelle> getMutuelle(final Long id) {
-		return mutuelleRepository.findById(id);
+	public Mutuelle getMutuelle(final Long id) {
+		return mutuelleRepository.findById(id).get();
 	}
 	
 	public Iterable<Mutuelle> getMutuelle() {

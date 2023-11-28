@@ -67,5 +67,4 @@ public class UserController {
         return "redirect:/index";
     }
 
-    // additional CRUD methods
 }

@@ -1,6 +1,5 @@
 package com.sparadrap.webapp.service;
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +16,8 @@ public class ClientService {
 	@Autowired 
 	ClientRepository  clientRepository;
 	
-	public Optional<Client> getClient(final Long id) {
-		return clientRepository.findById(id);
+	public Client getClient(final Long id) {
+		return clientRepository.findById(id).get();
 	}
 	
 	public Iterable<Client> getClient() {

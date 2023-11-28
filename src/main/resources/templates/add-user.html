@@ -1,4 +1,6 @@
 <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
+	<input type="hidden" th:field="*{id}" id ="id" class="form-control">
+	<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
     <label for="name">Name</label>
     <input type="text" th:field="*{name}" id="name" placeholder="Name">
     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>

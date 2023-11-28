@@ -48,6 +48,7 @@ body {
   th:action="@{/updateAdresse/{id}(id=${adresse.Adr_ID})}" 
   th:object="${adresse}" 
   method="post">
+  <input type="hidden" th:field="*{Adr_ID}" class="form-control">
     <label for="Adr_Numero_Rue">Numéro Rue</label>
     <input type="text" th:field="*{Adr_Numero_Rue}" id="Adr_Numero_Rue" placeholder="Adr_Numero_Rue">
     <span th:if="${#fields.hasErrors('Adr_Numero_Rue')}" th:errors="*{Adr_Numero_Rue}"></span>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sparadrap.webapp.model.Adresse;
+import com.sparadrap.webapp.repository.AdresseRepository;
 import com.sparadrap.webapp.service.AdresseService;
 
 import lombok.Data;
@@ -19,6 +20,9 @@ public class AdresseController {
 	
 	@Autowired
 	private AdresseService adresseService;
+	
+	@Autowired
+	private AdresseRepository repo;
 	    
 	@GetMapping("/signupAdresse")
     public String showSignUpForm(Adresse adresse) {
@@ -32,15 +36,15 @@ public class AdresseController {
 	        }
 	        
 	        adresseService.saveAdresse(adresse);
-	        return "redirect:/index";
+	        return "redirect:/";
 	    }
 	    
-	    @GetMapping("/")
+	    @GetMapping("/listAdresse")
 	    public String showAdresseList(Model model) {
 	    	Iterable<Adresse> listAdresse = adresseService.getAdresse();
 	        model.addAttribute("listAdresse", listAdresse);
 	        
-	        return "home";
+	        return "listAdresse";
 	    }
 	    
 	    @GetMapping("/editAdresse/{id}")
@@ -59,7 +63,7 @@ public class AdresseController {
 	            return "formUpdateAdresse";
 	        }
 	            
-	        adresseService.saveAdresse(adresse);
+	        repo.save(adresse);
 	        return "redirect:/";
 	    }
 	        

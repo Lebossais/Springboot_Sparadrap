@@ -1,7 +1,5 @@
 package com.sparadrap.webapp.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +15,8 @@ public class AchatService {
 	@Autowired 
 	AchatRepository  achatRepository;
 	
-	public Optional<Achat> getAchat(final Long id) {
-		return achatRepository.findById(id);
+	public Achat getAchat(final Long id) {
+		return achatRepository.findById(id).get();
 	}
 	
 	public Iterable<Achat> getAchat() {
