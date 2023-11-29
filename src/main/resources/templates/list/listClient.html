@@ -1,0 +1,53 @@
+<nav th:insert="header :: head"/>
+
+<body>
+	
+<nav th:insert="navbar :: nav"/>
+
+	<div class="container special">
+		<h2 class="h2">Liste des Clients</h2>
+		<div class="table-responsive">
+			<table class="table table-striped table-sm">
+				<thead>
+					<tr>
+						<th>Identité</th>
+						<th>Date de Naissance</th>
+						<th>Numéro de téléphone</th>
+						<th>Numéro de Sécu</th>
+						<th>Mutuelle</th>
+						<th>Medecin Traitant</th>
+						<th>Specialiste attitré</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${listClient.empty}">
+						<td colspan="3">Aucun Client en base de données</td>
+					</tr>
+					<tr th:each="client: ${listClient}">
+						<td><span th:text="${client.Personne.Per_Prenom} + ' ' + ${client.Personne.Per_Nom}"> Identité </span></td>
+						<td><span th:text="${client.Cli_Date_Naissance}"> Date de Naissance</span></td>
+						<td><span th:text="${client.Personne.Per_Telephone}"> Numéro de Téléphone</span></td>
+						<td><span th:text="${client.Cli_Numero_Secu}"> Numéro de Secu </span></td>
+						<td><span th:text="${client.Mutuelle.Entreprise.Ent_Raison_Sociale}"> Mutuelle </span></td>
+						<td><span th:text="Dr +' '+${client.Medecin.Personne.Per_Prenom} + ' ' + ${client.Medecin.Personne.Per_Nom}"> Medecin </span></td>
+						<td><span th:text="${client?.Specialiste?.Personne?.Per_Prenom}"> Spécialiste </span></td>
+						<td>
+							<a th:href="@{/editClient/{id}(id=${client.Cli_ID})}"><button class="btn btn-info">Modifier</button></a>
+							<a th:href="@{/deleteClient/{id}(id=${client.Cli_ID})}"><button class="btn btn-danger">Supprimer</button></a>						
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<h4><a th:href="@{/signupClient}">Ajouter un nouveau Client</a></h4>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>

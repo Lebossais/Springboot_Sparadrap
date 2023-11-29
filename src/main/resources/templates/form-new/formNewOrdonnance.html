@@ -1,0 +1,59 @@
+<head th:insert="header :: head"/>
+
+<body>
+	
+<nav th:insert="navbar :: nav"/>
+
+	<div class="container special">
+
+		<h2 class="h2">Ajout d'une nouvelle Adresse</h2>
+		<div>
+			<form method="post"
+				th:action="@{/addAdresse}" th:object="${adresse}">
+				<div class="form-group">
+					<input
+						type="hidden" th:field="*{Adr_ID}" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="Adr_Numero_RueInput">Numéro de Rue</label> 
+					<input
+						type="text" th:field="*{Adr_Numero_Rue}" class="form-control" id="Adr_Numero_RueInput"
+						aria-describedby="Adr_Numero_RueHelp" placeholder="Saisir le Numéro de Rue"> <small
+						id="Adr_Numero_RueHelp" class="form-text text-muted">Merci d'écrire le Numéro de Rue de l'adresse.</small>
+				</div>
+				<div class="form-group">
+					<label for="Adr_Nom_RueInput">Nom de Rue</label> 
+					<input
+						type="text" th:field="*{Adr_Nom_Rue}" class="form-control" id="Adr_Nom_RueInput"
+						aria-describedby="Adr_Nom_RueHelp" placeholder="Saisir le Nom de Rue"> <small
+						id="Adr_Nom_RueHelp" class="form-text text-muted">Merci d'écrire le Nom de Rue de l'adresse.</small>
+				</div>
+				<div class="form-group">
+					<label for="Adr_Code_PostalInput">Code Postal</label> 
+					<input
+						type="text" th:field="*{Adr_Code_Postal}" class="form-control" id="Adr_Code_PostalInput"
+						aria-describedby="Adr_Code_PostalHelp" placeholder="Saisir le Code Postal"> <small
+						id="Adr_Code_PostalHelp" class="form-text text-muted">Merci d'écrire le Code Postal de l'adresse</small>
+				</div>
+				<div class="form-group">
+					<label for="Adr_VilleInput">Nom de la Ville</label> 
+					<input
+						type="text" th:field="*{Adr_Ville}" class="form-control" id="Adr_VilleInput"
+						aria-describedby="Adr_VilleHelp" placeholder="Saisir le Nom de la Ville"> <small
+						id="Adr_VilleHelp" class="form-text text-muted">Merci d'écrire le Nom de la Ville.</small>
+				</div>
+				
+				<button type="submit" class="btn btn-primary">Créer</button>
+			</form>
+		</div>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>

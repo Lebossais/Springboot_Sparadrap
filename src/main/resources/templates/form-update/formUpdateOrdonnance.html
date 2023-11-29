@@ -1,0 +1,41 @@
+<head th:insert="header :: head"/>
+
+<body>
+	
+<nav th:insert="navbar :: nav"/>
+
+	<div class="container special">
+
+		<h2 class="h2">Modification d'une Ordonnance</h2>
+		<div>
+			<form action="#" 
+  th:action="@{/updateOrdonnance/{id}(id=${ordonnance.Ord_ID})}" 
+  th:object="${ordonnance}" 
+  method="post">
+  <input type="hidden" th:field="*{Ord_ID}" class="form-control">
+    <label for="Ord_Num">Numéro Ordonnance</label>
+    <input type="text" th:field="*{Ord_Num}" id="Ord_Num" placeholder="Ord_Num">
+    <span th:if="${#fields.hasErrors('Ord_Num')}" th:errors="*{Ord_Num}"></span>
+    <label for="Ord_Date">Date</label>
+    <input type="text" th:field="*{Ord_Date}" id="Ord_Date" placeholder="Ord_Date">
+    <span th:if="${#fields.hasErrors('Ord_Date')}" th:errors="*{Ord_Date}"></span>
+    <label for="medecin">Medecin</label>
+    <input type="text" th:field="*{medecin}" id="medecin" placeholder="medecin">
+    <span th:if="${#fields.hasErrors('medecin')}" th:errors="*{medecin}"></span>
+    <label for="Specialiste">Specialiste</label>
+    <input type="text" th:field="*{Specialiste}" id="Specialiste" placeholder="Specialiste">
+    <span th:if="${#fields.hasErrors('Specialiste')}" th:errors="*{Specialiste}"></span>
+    <input type="submit" value="Update Ordonnance">   
+</form>
+		</div>
+
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>

@@ -32,7 +32,7 @@ public class ClientController {
 	    @PostMapping("/addClient")
 	    public String addClient(Client client, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	            return "formNewClient";
+	            return "form-new/formNewClient";
 	        }
 	        
 	        clientService.saveClient(client);
@@ -44,7 +44,7 @@ public class ClientController {
 	    	Iterable<Client> listClient = clientService.getClient();
 	        model.addAttribute("listClient", listClient);
 	        
-	        return "listClient";
+	        return "list/listClient";
 	    }
 	    
 	    @GetMapping("/editClient/{id}")
@@ -52,7 +52,7 @@ public class ClientController {
 	    	Client client = clientService.getClient(id);
 	        
 	        model.addAttribute("client", client);
-	        return "formUpdateClient";
+	        return "form-update/formUpdateClient";
 	    }
 	    
 	    @PostMapping("/updateClient/{id}")
@@ -60,7 +60,7 @@ public class ClientController {
 	      BindingResult result, Model model) {
 	        if (result.hasErrors()) {
 	            client.setCli_ID(id);
-	            return "formUpdateClient";
+	            return "form-update/formUpdateClient";
 	        }
 	            
 	        repo.save(client);

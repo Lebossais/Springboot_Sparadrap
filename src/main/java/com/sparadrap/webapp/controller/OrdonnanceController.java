@@ -26,13 +26,13 @@ public class OrdonnanceController {
 	    
 	@GetMapping("/signupOrdonnance")
     public String showSignUpForm(Ordonnance ordonnance) {
-        return "formNewOrdonnance";
+        return "form-new/formNewOrdonnance";
     }
 	
 	    @PostMapping("/addOrdonnance")
 	    public String addOrdonnance(Ordonnance ordonnance, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	            return "formNewOrdonnance";
+	            return "form-new/formNewOrdonnance";
 	        }
 	        
 	        ordonnanceService.saveOrdonnance(ordonnance);
@@ -44,7 +44,7 @@ public class OrdonnanceController {
 	    	Iterable<Ordonnance> listOrdonnance = ordonnanceService.getOrdonnance();
 	        model.addAttribute("listOrdonnance", listOrdonnance);
 	        
-	        return "listOrdonnance";
+	        return "list/listOrdonnance";
 	    }
 	    
 	    @GetMapping("/editOrdonnance/{id}")
@@ -52,7 +52,7 @@ public class OrdonnanceController {
 	    	Ordonnance ordonnance = ordonnanceService.getOrdonnance(id);
 	        
 	        model.addAttribute("ordonnance", ordonnance);
-	        return "formUpdateOrdonnance";
+	        return "form-update/formUpdateOrdonnance";
 	    }
 	    
 	    @PostMapping("/updateOrdonnance/{id}")
@@ -60,7 +60,7 @@ public class OrdonnanceController {
 	      BindingResult result, Model model) {
 	        if (result.hasErrors()) {
 	        	ordonnance.setOrd_ID(id);
-	            return "formUpdateOrdonnance";
+	            return "form-update/formUpdateOrdonnance";
 	        }
 	            
 	        repo.save(ordonnance);

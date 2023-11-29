@@ -31,7 +31,7 @@ public class Client {
 	
 	@ManyToOne
 	@JoinColumn(name="Med_ID")
-	private Medecin Medecin_Traitant;
+	private Medecin Medecin;
 	
 	@ManyToOne
 	@JoinColumn(name="Spe_ID")

@@ -52,7 +52,7 @@ public class AdresseController {
 	        Adresse adresse = adresseService.getAdresse(id);
 	        
 	        model.addAttribute("adresse", adresse);
-	        return "formUpdateAdresse";
+	        return "form-update/formUpdateAdresse";
 	    }
 	    
 	    @PostMapping("/updateAdresse/{id}")
@@ -60,7 +60,7 @@ public class AdresseController {
 	      BindingResult result, Model model) {
 	        if (result.hasErrors()) {
 	            adresse.setAdr_ID(id);
-	            return "formUpdateAdresse";
+	            return "form-update/formUpdateAdresse";
 	        }
 	            
 	        repo.save(adresse);
