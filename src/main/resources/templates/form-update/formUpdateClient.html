@@ -1,10 +1,11 @@
-<head th:insert="header :: head"/>
+<head th:replace="~{header :: head}"/>
 
 <body>
-	
-<nav th:insert="navbar :: nav"/>
 
-	<div class="container special">
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+
+	<div class="container special" id="liste">
 
 		<h2 class="h2">Modification d'une Adresse</h2>
 		<div>

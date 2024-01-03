@@ -1,0 +1,51 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+
+<div class="container special">
+
+    <h2 class="h2">Ajout d'un nouveau Médecin</h2>
+    <div>
+        <form method="post"
+              th:action="@{/addMedecin}" th:object="${medecin}">
+            <div class="form-group">
+                <input
+                        type="hidden" th:field="*{Med_ID}" class="form-control">
+            </div>
+
+            <!-- Faire une ComboBox du choix de la personne. Ou choix de la création d'une nouvelle Personne ? Idée Popup -->
+
+            <div class="form-group">
+                <select>
+                    <option th:each="personne: ${listPersonne}"
+                            th:text="${personne.Per_Prenom} + ' ' +${personne.Per_Nom}"
+                            th:value="${Per_ID}"></option>
+                </select>
+                <small id="Per_IDHelp" class="form-text text-muted">Merci de choisir l'identité du Médecin </small>
+            </div>
+
+            <div class="form-group">
+                <label for="Med_AggrementInput">Numéro d'Aggrément du Médecin</label>
+                <input
+                        type="text" th:field="*{Med_Aggrement}" class="form-control" id="Med_AggrementInput"
+                        aria-describedby="Med_AggrementHelp" placeholder="Saisir le Numéro d'Aggrément"> <small
+                    id="Med_AggrementHelp" class="form-text text-muted">Merci d'écrire le Numéro d'Aggrément du Médecin</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

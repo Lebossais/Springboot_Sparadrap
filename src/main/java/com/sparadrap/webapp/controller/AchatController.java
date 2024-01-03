@@ -28,7 +28,7 @@ public class AchatController {
 	public String Home() {
 		return "home";
 	}
-	    
+
 	@GetMapping("/signupAchat")
     public String showSignUpForm(Achat achat) {
         return "formNewAchat";

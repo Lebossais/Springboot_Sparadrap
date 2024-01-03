@@ -1,0 +1,35 @@
+<div class="container special " id="liste" th:fragment="spe">
+    <h2 class="h2">Liste des Spécialistes</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <tr>
+                <th>Identité</th>
+                <th>Spécialité </th>
+                <th>Numéro de Téléphone</th>
+                <th>Email</th>
+                <th>Adresse</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${listSpecialiste.empty}">
+                <td colspan="3">Aucun Spécialiste en base de données</td>
+            </tr>
+            <tr th:each="specialiste: ${listSpecialiste}">
+                <td><span th:text=" Dr +' ' + ${specialiste.Personne.Per_Prenom} + ' ' + ${specialiste.Personne.Per_Nom}"> Identité </span></td>
+                <td><span th:text="${specialiste.spe_Specialite}"> Spécialité </span></td>
+                <td><span th:text="${specialiste.Personne.Per_Telephone}"> Numéro de Téléphone </span></td>
+                <td><span th:text="${specialiste.Personne.Per_Email}"> Email </span></td>
+                <td><span th:text="${specialiste.Personne.Adresse.Adr_Numero_Rue} + ' ' +${specialiste.Personne.Adresse.Adr_Nom_Rue}
+                + ' ' + ${specialiste.Personne.Adresse.Adr_Code_Postal} + ' ' + ${specialiste.Personne.Adresse.Adr_Ville}"> Adresse </span></td>
+                <td>
+                    <a th:href="@{/editSpecialiste/{id}(id=${specialiste.Spe_ID})}"><button class="btn btn-info">Modifier</button></a>
+                    <a th:href="@{/deleteSpecialiste/{id}(id=${specialiste.Spe_ID})}"><button class="btn btn-danger">Supprimer</button></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h4><a th:href="@{/signupSpecialiste}">Ajouter un nouveau Spécialiste</a></h4>
+
+</div>

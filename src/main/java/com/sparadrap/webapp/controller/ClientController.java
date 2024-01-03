@@ -1,5 +1,6 @@
 package com.sparadrap.webapp.controller;
 
+import com.sparadrap.webapp.repository.PersonneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,10 +24,16 @@ public class ClientController {
 	
 	@Autowired
 	private ClientRepository repo;
-	    
+
+	@Autowired
+	private PersonneRepository perRepo;
+
+	@Autowired
+	private ClientRepository cliRepo;
+
 	@GetMapping("/signupClient")
     public String showSignUpForm(Client client) {
-        return "formNewClient";
+        return "form-new/formNewClient";
     }
 	
 	    @PostMapping("/addClient")

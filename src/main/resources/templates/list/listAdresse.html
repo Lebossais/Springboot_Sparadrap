@@ -1,16 +1,17 @@
-<nav th:insert="header :: head"/>
+<head th:replace="~{header :: head}"/>
 
 <body>
-	
-<nav th:insert="navbar :: nav"/>
 
-	<div class="container special">
-		<h2 class="h2">Liste des adresses</h2>
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+
+	<div class="container special " id="liste">
+		<h2 class="h2">Liste des Adresses</h2>
 		<div class="table-responsive">
 			<table class="table table-striped table-sm">
 				<thead>
 					<tr>
-						<th>Numéro de Rue</th>
+						<th>Numéro de Rues</th>
 						<th>Nom de Rue</th>
 						<th>Code Postal</th>
 						<th>Ville</th>

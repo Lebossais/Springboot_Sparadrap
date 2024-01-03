@@ -1,5 +1,9 @@
 package com.sparadrap.webapp.controller;
 
+import com.sparadrap.webapp.model.Specialiste;
+import com.sparadrap.webapp.repository.PersonneRepository;
+import com.sparadrap.webapp.repository.SpecialisteRepository;
+import com.sparadrap.webapp.service.SpecialisteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,22 +21,33 @@ import lombok.Data;
 @Data
 @Controller
 public class MedecinController {
-	
+
+	@Autowired
+	private SpecialisteService specialisteService;
+
 	@Autowired
 	private MedecinService medecinService;
 	
 	@Autowired
 	private MedecinRepository repo;
+
+	@Autowired
+	private PersonneRepository perRepo;
+
+	@Autowired
+	private SpecialisteRepository speRepo;
+
 	    
 	@GetMapping("/signupMedecin")
-    public String showSignUpForm(Medecin medecin) {
-        return "formNewMedecin";
+    public String showSignUpForm(Medecin medecin, Model model) {
+		model.addAttribute("listPersonne", perRepo.findAll());
+        return "form-new/formNewMedecin";
     }
 	
 	    @PostMapping("/addMedecin")
 	    public String addMedecin(Medecin medecin, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	            return "formNewMedecin";
+	            return "form-new/formNewMedecin";
 	        }
 	        
 	        medecinService.saveMedecin(medecin);
@@ -43,8 +58,11 @@ public class MedecinController {
 	    public String showMedecinList(Model model) {
 	    	Iterable<Medecin> listMedecin = medecinService.getMedecin();
 	        model.addAttribute("listMedecin", listMedecin);
+
+			Iterable<Specialiste> listSpecialiste = specialisteService.getSpecialiste();
+			model.addAttribute("listSpecialiste", listSpecialiste);
 	        
-	        return "listMedecin";
+	        return "list/listMedecin";
 	    }
 	    
 	    @GetMapping("/editMedecin/{id}")
@@ -52,7 +70,7 @@ public class MedecinController {
 	    	Medecin medecin = medecinService.getMedecin(id);
 	        
 	        model.addAttribute("medecin", medecin);
-	        return "formUpdateMedecin";
+	        return "form-update/formUpdateMedecin";
 	    }
 	    
 	    @PostMapping("/updateMedecin/{id}")
@@ -60,7 +78,7 @@ public class MedecinController {
 	      BindingResult result, Model model) {
 	        if (result.hasErrors()) {
 	        	medecin.setMed_ID(id);
-	            return "formUpdateMedecin";
+	            return "form-update/formUpdateMedecin";
 	        }
 	            
 	        repo.save(medecin);

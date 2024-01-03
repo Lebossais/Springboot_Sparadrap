@@ -1,0 +1,73 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+
+<div class="container special">
+
+    <h2 class="h2">Ajout d'une nouvelle Personne</h2>
+    <div>
+        <form method="post"
+              th:action="@{/addPersonne}" th:object="${personne}">
+            <div class="form-group">
+                <input
+                        type="hidden" th:field="*{Per_ID}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="Per_PrenomInput">Prénom de la Personne</label>
+                <input
+                        type="text" th:field="*{Per_Prenom}" class="form-control" id="Per_PrenomInput"
+                        aria-describedby="Per_PrenomHelp" placeholder="Saisir le Prénom de la Personne"> <small
+                    id="Per_PrenomHelp" class="form-text text-muted">Merci d'écrire le Prénom de la Personne.</small>
+            </div>
+            <div class="form-group">
+                <label for="Per_NomInput">Nom de la Personne</label>
+                <input
+                        type="text" th:field="*{Per_Nom}" class="form-control" id="Per_NomInput"
+                        aria-describedby="Per_NomHelp" placeholder="Saisir le Nom de la Personne"> <small
+                    id="Per_NomHelp" class="form-text text-muted">Merci d'écrire le Nom de la Personne.</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Per_TelephoneInput">Téléphone de la Personne</label>
+                <input
+                        type="text" th:field="*{Per_Telephone}" class="form-control" id="Per_TelephoneInput"
+                        aria-describedby="Per_TelephoneHelp" placeholder="Saisir le Numéro de Téléphone"> <small
+                    id="Per_TelephoneHelp" class="form-text text-muted">Merci d'écrire le Numéro de Téléphone de la Personne</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Per_EmailInput">Email de la Personne</label>
+                <input
+                        type="text" th:field="*{Per_Email}" class="form-control" id="Per_EmailInput"
+                        aria-describedby="Per_EmailHelp" placeholder="Saisir l'Email de la personne"> <small
+                    id="Per_EmailHelp" class="form-text text-muted">Merci d'écrire l'Email de la Personne</small>
+            </div>
+
+            <!-- Faire une ComboBox du choix de l'Adresse. Ou choix de la création d'une nouvelle Adresse ? Idée Popup -->
+
+            <div class="form-group">
+                           <select>
+                               <option th:each="adresse: ${listAdresse}"
+                                       th:text="${adresse.Adr_Numero_Rue} + ' ' +${adresse.Adr_Nom_Rue} + ' ' + ${adresse.Adr_Code_Postal} + ' ' + ${adresse.Adr_Ville}"
+                                       th:value="${Adr_ID}"></option>
+                           </select>
+                <small id="Adr_IDHelp" class="form-text text-muted">Merci de choisir l'Adresse de la Personne </small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.sparadrap.webapp.controller;
 
+import com.sparadrap.webapp.repository.AdresseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,16 +24,20 @@ public class PersonneController {
 	
 	@Autowired
 	private PersonneRepository repo;
+
+	@Autowired
+	private AdresseRepository adrRepo;
 	    
 	@GetMapping("/signupPersonne")
-    public String showSignUpForm(Personne personne) {
-        return "formNewPersonne";
+    public String showSignUpForm(Personne personne, Model model) {
+		model.addAttribute("listAdresse", adrRepo.findAll());
+        return "form-new/formNewPersonne";
     }
 	
 	    @PostMapping("/addPersonne")
 	    public String addPersonne(Personne personne, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	            return "formNewPersonne";
+	            return "form-new/formNewPersonne";
 	        }
 	        
 	        personneService.savePersonne(personne);
@@ -44,7 +49,7 @@ public class PersonneController {
 	    	Iterable<Personne> listPersonne = personneService.getPersonne();
 	        model.addAttribute("listPersonne", listPersonne);
 	        
-	        return "listPersonne";
+	        return "list/listPersonne";
 	    }
 	    
 	    @GetMapping("/editPersonne/{id}")
@@ -52,7 +57,7 @@ public class PersonneController {
 	    	Personne personne = personneService.getPersonne(id);
 	        
 	        model.addAttribute("personne", personne);
-	        return "formUpdatePersonne";
+	        return "form-update/formUpdatePersonne";
 	    }
 	    
 	    @PostMapping("/updatePersonne/{id}")
@@ -60,7 +65,7 @@ public class PersonneController {
 	      BindingResult result, Model model) {
 	        if (result.hasErrors()) {
 	        	personne.setPer_ID(id);
-	            return "formUpdatePersonne";
+	            return "form-update/formUpdatePersonne";
 	        }
 	            
 	        repo.save(personne);

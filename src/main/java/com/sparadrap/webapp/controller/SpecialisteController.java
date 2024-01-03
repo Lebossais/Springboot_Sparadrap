@@ -1,6 +1,8 @@
 package com.sparadrap.webapp.controller;
 
+import com.sparadrap.webapp.repository.PersonneRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,16 +25,20 @@ public class SpecialisteController {
 	
 	@Autowired
 	private SpecialisteRepository repo;
-	    
+
+	@Autowired
+	private PersonneRepository perRepo;
+
 	@GetMapping("/signupSpecialiste")
-    public String showSignUpForm(Specialiste specialiste) {
-        return "formNewSpecialiste";
+    public String showSignUpForm(Specialiste specialiste, Model model) {
+		model.addAttribute("listPersonne", perRepo.findAll());
+        return "form-new/formNewSpecialiste";
     }
 	
 	    @PostMapping("/addSpecialiste")
 	    public String addSpecialiste(Specialiste specialiste, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	            return "formNewSpecialiste";
+	            return "form-new/formNewSpecialiste";
 	        }
 	        
 	        specialisteService.saveSpecialiste(specialiste);
@@ -44,7 +50,7 @@ public class SpecialisteController {
 	    	Iterable<Specialiste> listSpecialiste = specialisteService.getSpecialiste();
 	        model.addAttribute("listSpecialiste", listSpecialiste);
 	        
-	        return "listSpecialiste";
+	        return "list/listSpecialiste";
 	    }
 	    
 	    @GetMapping("/editSpecialiste/{id}")
@@ -52,7 +58,7 @@ public class SpecialisteController {
 	    	Specialiste specialiste = specialisteService.getSpecialiste(id);
 	        
 	        model.addAttribute("specialiste", specialiste);
-	        return "formUpdateSpecialiste";
+	        return "form-update/formUpdateSpecialiste";
 	    }
 	    
 	    @PostMapping("/updateSpecialiste/{id}")
@@ -60,7 +66,7 @@ public class SpecialisteController {
 	      BindingResult result, Model model) {
 	        if (result.hasErrors()) {
 	        	specialiste.setSpe_ID(id);
-	            return "formUpdateSpecialiste";
+	            return "form-update/formUpdateSpecialiste";
 	        }
 	            
 	        repo.save(specialiste);
