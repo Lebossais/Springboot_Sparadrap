@@ -1,0 +1,49 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+
+    <div class="container special" id="liste">
+        <h2 class="h2">Liste des Medicaments</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th>Nom du Médicament</th>
+                    <th>Prix du médicament</th>
+                    <th>Date de Mise en Service</th>
+                    <th>Catégorie</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${listMedicament.empty}">
+                    <td colspan="3">Aucun Médicament en base de données</td>
+                </tr>
+                <tr th:each="medicament: ${listMedicament}">
+                    <td><span th:text="${medicament.Medi_Nom}"> Nom du Médicament </span></td>
+                    <td><span th:text="${medicament.Medi_Prix} + '.00 €'"> Prix de la boîte </span></td>
+                    <td><span th:text="${medicament.Medi_Date_Mise_Service}"> Date Mise en Service </span></td>
+                    <td><span th:text="${medicament.Categorie.Cat_Categorie}"> Catégorie </span></td>
+                    <td>
+                        <a th:href="@{/editMedicament/{id}(id=${medicament.Medi_ID})}"><button class="btn btn-info">Modifier</button></a>
+                        <a th:href="@{/deleteMedicament/{id}(id=${medicament.Medi_ID})}"><button class="btn btn-danger">Supprimer</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4><a th:href="@{/signupMedicament}">Ajouter un nouveau Médicament</a></h4>
+        <h4><a th:href="@{/signupCategorie}">Ajouter un nouvelle Catégorie</a></h4>
+    </div>
+
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</body>
+</html>

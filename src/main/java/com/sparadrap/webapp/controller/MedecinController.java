@@ -1,8 +1,11 @@
 package com.sparadrap.webapp.controller;
 
+import com.sparadrap.webapp.model.Mutuelle;
 import com.sparadrap.webapp.model.Specialiste;
+import com.sparadrap.webapp.repository.MutuelleRepository;
 import com.sparadrap.webapp.repository.PersonneRepository;
 import com.sparadrap.webapp.repository.SpecialisteRepository;
+import com.sparadrap.webapp.service.MutuelleService;
 import com.sparadrap.webapp.service.SpecialisteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +40,12 @@ public class MedecinController {
 	@Autowired
 	private SpecialisteRepository speRepo;
 
+	@Autowired
+	private MutuelleService mutuelleService;
+
+	@Autowired
+	private MutuelleRepository mutRepo;
+
 	    
 	@GetMapping("/signupMedecin")
     public String showSignUpForm(Medecin medecin, Model model) {
@@ -61,6 +70,9 @@ public class MedecinController {
 
 			Iterable<Specialiste> listSpecialiste = specialisteService.getSpecialiste();
 			model.addAttribute("listSpecialiste", listSpecialiste);
+
+			Iterable<Mutuelle> listMutuelle = mutuelleService.getMutuelle();
+			model.addAttribute("listMutuelle", listMutuelle);
 	        
 	        return "list/listMedecin";
 	    }

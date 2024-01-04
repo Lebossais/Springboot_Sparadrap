@@ -19,8 +19,9 @@ public class Medicament {
 	private String Medi_Nom;
 	
 	private int Medi_Prix;
-	
-	private String Medi_Date_Mise_en_Service;
+
+
+	private String Medi_Date_Mise_Service;
 	
 	@ManyToOne
 	@JoinColumn(name="Cat_ID")

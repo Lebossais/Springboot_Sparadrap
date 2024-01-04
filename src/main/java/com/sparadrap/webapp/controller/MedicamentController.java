@@ -1,5 +1,8 @@
 package com.sparadrap.webapp.controller;
 
+import com.sparadrap.webapp.model.Categorie;
+import com.sparadrap.webapp.repository.CategorieRepository;
+import com.sparadrap.webapp.service.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,16 +26,22 @@ public class MedicamentController {
 	
 	@Autowired
 	private MedicamentRepository repo;
+
+	@Autowired
+	private CategorieService categorieService;
+
+	@Autowired
+	private CategorieRepository catRepo;
 	    
 	@GetMapping("/signupMedicament")
     public String showSignUpForm(Medicament medicament) {
-        return "formNewMedicament";
+        return "form-new/formNewMedicament";
     }
 	
 	    @PostMapping("/addMedicament")
 	    public String addMedicament(Medicament medicament, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	            return "formNewMedicament";
+	            return "form-new/formNewMedicament";
 	        }
 	        
 	        medicamentService.saveMedicament(medicament);
@@ -43,8 +52,11 @@ public class MedicamentController {
 	    public String showMedicamentList(Model model) {
 	    	Iterable<Medicament> listMedicament = medicamentService.getMedicament();
 	        model.addAttribute("listMedicament", listMedicament);
-	        
-	        return "listMedicament";
+
+			Iterable<Categorie> listCategorie = categorieService.getCategorie();
+			model.addAttribute("listCategorie", listCategorie);
+
+			return "list/listMedicament";
 	    }
 	    
 	    @GetMapping("/editMedicament/{id}")
@@ -52,7 +64,7 @@ public class MedicamentController {
 	    	Medicament medicament = medicamentService.getMedicament(id);
 	        
 	        model.addAttribute("medicament", medicament);
-	        return "formUpdateMedicament";
+	        return "form-update/formUpdateMedicament";
 	    }
 	    
 	    @PostMapping("/updateMedicament/{id}")
@@ -60,7 +72,7 @@ public class MedicamentController {
 	      BindingResult result, Model model) {
 	        if (result.hasErrors()) {
 	        	medicament.setMedi_ID(id);
-	            return "formUpdateMedicament";
+	            return "form-update/formUpdateMedicament";
 	        }
 	            
 	        repo.save(medicament);

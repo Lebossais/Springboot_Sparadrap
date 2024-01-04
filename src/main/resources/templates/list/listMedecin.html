@@ -6,6 +6,7 @@
 <div th:replace="~{navbar :: nav2}"/>
 
 <div  id="liste">
+
 <div class="container special">
     <h2 class="h2">Liste des Médecins</h2>
     <div class="table-responsive">
@@ -78,6 +79,46 @@
     <h4><a th:href="@{/signupSpecialiste}">Ajouter un nouveau Spécialiste</a></h4>
 
 </div>
+
+    <br>
+
+    <div class="container special ">
+        <h2 class="h2">Liste des Mutuelles</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th>Identité de la Mutuelle</th>
+                    <th>Département </th>
+                    <th>Prise en Charge globale</th>
+                    <th>Numéro de Téléphone</th>
+                    <th>Email</th>
+                    <th>Adresse</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${listMutuelle.empty}">
+                    <td colspan="3">Aucune Mutuelle en base de données</td>
+                </tr>
+                <tr th:each="mutuelle: ${listMutuelle}">
+                    <td><span th:text="${mutuelle.Entreprise.Ent_Raison_Sociale}"> Identité de la Mutuelle </span></td>
+                    <td><span th:text="${mutuelle.Mut_Departement}"> Département </span></td>
+                    <td><span th:text="${mutuelle.Mut_Prise_En_Charge} + ' %' "> Prise en charge Globale </span></td>
+                    <td><span th:text="${mutuelle.Entreprise.Ent_Telephone}"> Numéro de Téléphone </span></td>
+                    <td><span th:text="${mutuelle.Entreprise.Ent_Email}"> Email </span></td>
+                    <td><span th:text="${mutuelle.Entreprise.Adresse.Adr_Numero_Rue} + ' ' +${mutuelle.Entreprise.Adresse.Adr_Nom_Rue}
+                + ' ' + ${mutuelle.Entreprise.Adresse.Adr_Code_Postal} + ' ' + ${mutuelle.Entreprise.Adresse.Adr_Ville}"> Adresse </span></td>
+                    <td>
+                        <a th:href="@{/editMutuelle/{id}(id=${mutuelle.Mut_ID})}"><button class="btn btn-info">Modifier</button></a>
+                        <a th:href="@{/deleteMutuelle/{id}(id=${mutuelle.Mut_ID})}"><button class="btn btn-danger">Supprimer</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4><a th:href="@{/signupMutuelle}">Ajouter un nouveau Mutuelle</a></h4>
+    </div>
+
 </div>
 
 <script
