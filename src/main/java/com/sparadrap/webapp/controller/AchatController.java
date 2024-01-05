@@ -24,7 +24,7 @@ public class AchatController {
 	@Autowired
 	private AchatRepository repo;
 	
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String Home() {
 		return "home";
 	}
