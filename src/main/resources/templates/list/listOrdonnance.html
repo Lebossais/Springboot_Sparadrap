@@ -29,6 +29,37 @@
 						<td><span th:text="${ordonnance?.Specialiste?.Personne?.Per_Prenom}"> Spécialiste </span></td>
 						<td><span th:text="${ordonnance.Client.Personne.Per_Prenom} + ' ' + ${ordonnance.Client.Personne.Per_Nom}"> Client </span></td>
 						<td>
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary"
+									data-bs-toggle="modal" th:attr="data-bs-target=${'#editModalOrd'+ ordonnance.Ord_ID}"
+									data-row="${ordonnance}">Informations </button>
+
+							<!-- Modal -->
+							<div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" th:each="ordonnance : ${listOrdonnance}" th:attr="id=${'editModalOrd' + ordonnance.Ord_ID}">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h1 class="modal-title fs-5" id="exampleModalLabel">Ordonnances</h1>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<span th:text="${ordonnance.Ord_Num}"> Numéro de l'Ordonnance </span>
+											<span th:text="${ordonnance.Ord_Date}"> Date </span>
+											<span th:text="Dr +' '+${ordonnance.Medecin.Personne.Per_Prenom} + ' ' + ${ordonnance.Medecin.Personne.Per_Nom}"> Medecin </span>
+											<span th:text="${ordonnance?.Specialiste?.Personne?.Per_Prenom}"> Spécialiste </span>
+											<span th:text="${ordonnance.Client.Personne.Per_Prenom} + ' ' + ${ordonnance.Client.Personne.Per_Nom}"> Client </span>
+
+											Informations concernant les médicaments concernés aussi. (A rajouter)
+
+										</div>
+
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
 							<a th:href="@{/editOrdonnance/{id}(id=${ordonnance.Ord_ID})}"><button class="btn btn-info">Modifier</button></a>
 							<a th:href="@{/deleteOrdonnance/{id}(id=${ordonnance.Ord_ID})}"><button class="btn btn-danger">Supprimer</button></a>						
 						</td>
