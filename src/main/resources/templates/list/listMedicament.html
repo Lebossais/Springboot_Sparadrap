@@ -27,6 +27,34 @@
                     <td><span th:text="${medicament.Medi_Date_Mise_Service}"> Date Mise en Service </span></td>
                     <td><span th:text="${medicament.Categorie.Cat_Categorie}"> Catégorie </span></td>
                     <td>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary"
+                                data-bs-toggle="modal" th:attr="data-bs-target=${'#editModalMedi'+ medicament.Medi_ID}"
+                                data-row="${medicament}">Informations </button>
+
+                        <!--  Modal -->
+                        <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" th:each="medicament : ${listMedicament}" th:attr="id=${'editModalMedi' + medicament.Medi_ID}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Medicament</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <a class="debut"> Nom du Médicament : </a><span th:text="${medicament.Medi_Nom}"> Nom du Médicament </span><br>
+                                        <a class="debut"> Prix de la boîte : </a><span th:text="${medicament.Medi_Prix} + '.00 €'"> Prix de la boîte </span><br>
+                                        <a class="debut"> Date Mise en Service : </a><span th:text="${medicament.Medi_Date_Mise_Service}"> Date Mise en Service </span><br>
+                                        <a class="debut"> Catégorie : </a><span th:text="${medicament.Categorie.Cat_Categorie}"> Catégorie </span>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <a th:href="@{/editMedicament/{id}(id=${medicament.Medi_ID})}"><button class="btn btn-info">Modifier</button></a>
                         <a th:href="@{/deleteMedicament/{id}(id=${medicament.Medi_ID})}"><button class="btn btn-danger">Supprimer</button></a>
                     </td>

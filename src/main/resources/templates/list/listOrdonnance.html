@@ -39,17 +39,25 @@
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h1 class="modal-title fs-5" id="exampleModalLabel">Ordonnances</h1>
+											<h1 class="modal-title fs-5" id="exampleModalLabel">Ordonnance</h1>
 											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											<span th:text="${ordonnance.Ord_Num}"> Numéro de l'Ordonnance </span>
-											<span th:text="${ordonnance.Ord_Date}"> Date </span>
-											<span th:text="Dr +' '+${ordonnance.Medecin.Personne.Per_Prenom} + ' ' + ${ordonnance.Medecin.Personne.Per_Nom}"> Medecin </span>
-											<span th:text="${ordonnance?.Specialiste?.Personne?.Per_Prenom}"> Spécialiste </span>
-											<span th:text="${ordonnance.Client.Personne.Per_Prenom} + ' ' + ${ordonnance.Client.Personne.Per_Nom}"> Client </span>
+											<a class="debut"> Numéro Ordonnance : </a> <span th:text="${ordonnance.Ord_Num}"> Numéro de l'Ordonnance </span> <br>
+											<a class="debut"> Date : </a> <span th:text="${ordonnance.Ord_Date}"> Date </span> <br>
+											<a class="debut"> Medecin : </a> <span th:text="Dr +' '+${ordonnance.Medecin.Personne.Per_Prenom} + ' ' + ${ordonnance.Medecin.Personne.Per_Nom}"> Medecin </span> <br>
+											<a class="debut"> Spécialiste : </a> <span th:text="${ordonnance?.Specialiste?.Personne?.Per_Prenom}"> Spécialiste </span> <span th:text=" '(' + ${ordonnance?.Specialiste?.Spe_Specialite}+')'"> Spécialité </span>  <br>
+											<a class="debut"> Client : </a> <span th:text="${ordonnance.Client.Personne.Per_Prenom} + ' ' + ${ordonnance.Client.Personne.Per_Nom}"> Client </span><br>
+
+											<h2 class="h2" style="font-size: 120%"> Résumé Commande </h2>
 
 											Informations concernant les médicaments concernés aussi. (A rajouter)
+											Faut penser à rajouter le Compose... YES
+											Boucle pour parcours pour chaque compose qui a le ORD_ID Qui affiche :
+
+											<a class="debut"> Medicament : </a> <span>  </span> <br>
+											<a class="debut"> Quantité : </a> <span>   </span> <br>
+											<a class="debut"> Medicament : </a> <span>   </span> <br>
 
 										</div>
 

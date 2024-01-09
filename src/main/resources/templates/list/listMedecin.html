@@ -57,12 +57,18 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <span th:text=" Dr +' ' + ${medecin.Personne.Per_Prenom} + ' ' + ${medecin.Personne.Per_Nom}"> Identité </span>
-                                    <span th:text="${medecin.med_Aggrement}"> Numéro d'Aggrément </span>
-                                    <span th:text="${medecin.Personne.Per_Telephone}"> Numéro de Téléphone </span>
-                                    <span th:text="${medecin.Personne.Per_Email}"> Email </span>
-                                    <span th:text="${medecin.Personne.Adresse.Adr_Numero_Rue} + ' ' +${medecin.Personne.Adresse.Adr_Nom_Rue}
-                                    + ' ' + ${medecin.Personne.Adresse.Adr_Code_Postal} + ' ' + ${medecin.Personne.Adresse.Adr_Ville}"> Adresse </span>
+                                    <a class="debut"> Identité : </a> <span th:text=" Dr +' ' + ${medecin.Personne.Per_Prenom} + ' ' + ${medecin.Personne.Per_Nom}"> Identité </span> <br>
+                                    <a class="debut"> Numéro d'Aggrément : </a> <span th:text="${medecin.med_Aggrement}"> Numéro d'Aggrément </span> <br>
+                                    <a class="debut"> Numéro de Téléphone : </a> <span th:text="${medecin.Personne.Per_Telephone}"> Numéro de Téléphone </span> <br>
+                                    <a class="debut"> Email : </a> <a th:href="'mailto:' + ${medecin.Personne.Per_Email}" th:text="${medecin.Personne.Per_Email}"> Email </a> <br>
+
+                                    <h2 class="h2" style="font-size: 120%"> Adresse </h2>
+
+                                    <a class="debut"> Numéro de Rue : </a> <span th:text="${medecin.Personne.Adresse.Adr_Numero_Rue}"></span> <br>
+                                    <a class="debut"> Nom de Rue : </a> <span th:text="${medecin.Personne.Adresse.Adr_Nom_Rue}"></span> <br>
+                                    <a class="debut"> Code Postal : </a> <span th:text="${medecin.Personne.Adresse.Adr_Code_Postal}"></span><br>
+                                    <a class="debut"> Ville : </a> <span th:text="${medecin.Personne.Adresse.Adr_Ville}"></span>
+
                                 </div>
 
                                 <div class="modal-footer">
@@ -123,13 +129,19 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <span th:text=" Dr +' ' + ${specialiste.Personne.Per_Prenom} + ' ' + ${specialiste.Personne.Per_Nom}"> Identité </span>
-                                    <span th:text="${specialiste.spe_Specialite}"> Spécialité </span>
-                                    <span th:text="${specialiste.Personne.Per_Telephone}"> Numéro de Téléphone </span>
-                                    <span th:text="${specialiste.Personne.Per_Email}"> Email </span>
-                                    <span th:text="${specialiste.Personne.Adresse.Adr_Numero_Rue} + ' ' +${specialiste.Personne.Adresse.Adr_Nom_Rue}
-                                    + ' ' + ${specialiste.Personne.Adresse.Adr_Code_Postal} + ' ' + ${specialiste.Personne.Adresse.Adr_Ville}"> Adresse </span>
-                                </div>
+                                    <a class="debut"> Identité : </a> <span th:text=" Dr +' ' + ${specialiste.Personne.Per_Prenom} + ' ' + ${specialiste.Personne.Per_Nom}"> Identité </span> <br>
+                                    <a class="debut"> Spécialité : </a> <span th:text="${specialiste.spe_Specialite}"> Spécialité </span> <br>
+                                    <a class="debut"> Numéro de Téléphone : </a> <span th:text="${specialiste.Personne.Per_Telephone}"> Numéro de Téléphone </span> <br>
+                                    <a class="debut"> Email : </a> <a th:href="'mailto:' + ${specialiste.Personne.Per_Email}" th:text="${specialiste.Personne.Per_Email}"> Email </a> <br>
+
+                                    <h2 class="h2" style="font-size: 120%"> Adresse </h2>
+
+                                    <a class="debut"> Numéro de Rue : </a> <span th:text="${specialiste.Personne.Adresse.Adr_Numero_Rue}"></span> <br>
+                                    <a class="debut"> Nom de Rue : </a> <span th:text="${specialiste.Personne.Adresse.Adr_Nom_Rue}"></span> <br>
+                                    <a class="debut"> Code Postal : </a> <span th:text="${specialiste.Personne.Adresse.Adr_Code_Postal}"></span><br>
+                                    <a class="debut"> Ville : </a> <span th:text="${specialiste.Personne.Adresse.Adr_Ville}"></span>
+
+                                    </div>
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -193,14 +205,20 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <span th:text="${mutuelle.Entreprise.Ent_Raison_Sociale}"> Identité de la Mutuelle </span>
-                                        <span th:text="${mutuelle.Mut_Departement}"> Département </span>
-                                        <span th:text="${mutuelle.Mut_Prise_En_Charge} + ' %' "> Prise en charge Globale </span>
-                                        <span th:text="${mutuelle.Entreprise.Ent_Telephone}"> Numéro de Téléphone </span>
-                                        <span th:text="${mutuelle.Entreprise.Ent_Email}"> Email </span>
-                                        <span th:text="${mutuelle.Entreprise.Adresse.Adr_Numero_Rue} + ' ' +${mutuelle.Entreprise.Adresse.Adr_Nom_Rue}
-                + ' ' + ${mutuelle.Entreprise.Adresse.Adr_Code_Postal} + ' ' + ${mutuelle.Entreprise.Adresse.Adr_Ville}"> Adresse </span>
-                                    </div>
+                                        <a class="debut"> Identité : </a> <span th:text="${mutuelle.Entreprise.Ent_Raison_Sociale}"> Identité de la Mutuelle </span> <br>
+                                        <a class="debut"> Département : </a> <span th:text="${mutuelle.Mut_Departement}"> Département </span> <br>
+                                        <a class="debut"> Prise en Charge : </a> <span th:text="${mutuelle.Mut_Prise_En_Charge} + ' %' "> Prise en charge Globale </span> <br>
+                                        <a class="debut"> Numéro de Téléphone : </a> <span th:text="${mutuelle.Entreprise.Ent_Telephone}"> Numéro de Téléphone </span> <br>
+                                        <a class="debut"> Email : </a> <a th:href="'mailto:' + ${mutuelle.Entreprise.Ent_Email}" th:text="${mutuelle.Entreprise.Ent_Email}"> Email </a> <br>
+
+                                        <h2 class="h2" style="font-size: 120%"> Adresse </h2>
+
+                                        <a class="debut"> Numéro de Rue : </a> <span th:text="${mutuelle.Entreprise.Adresse.Adr_Numero_Rue}"></span> <br>
+                                        <a class="debut"> Nom de Rue : </a> <span th:text="${mutuelle.Entreprise.Adresse.Adr_Nom_Rue}"></span> <br>
+                                        <a class="debut"> Code Postal : </a> <span th:text="${mutuelle.Entreprise.Adresse.Adr_Code_Postal}"></span><br>
+                                        <a class="debut"> Ville : </a> <span th:text="${mutuelle.Entreprise.Adresse.Adr_Ville}"></span>
+
+                                        </div>
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
