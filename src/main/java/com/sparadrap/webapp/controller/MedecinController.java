@@ -6,6 +6,7 @@ import com.sparadrap.webapp.repository.MutuelleRepository;
 import com.sparadrap.webapp.repository.PersonneRepository;
 import com.sparadrap.webapp.repository.SpecialisteRepository;
 import com.sparadrap.webapp.service.MutuelleService;
+import com.sparadrap.webapp.service.PersonneService;
 import com.sparadrap.webapp.service.SpecialisteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,9 @@ public class MedecinController {
 	private PersonneRepository perRepo;
 
 	@Autowired
+	private PersonneService perService;
+
+	@Autowired
 	private SpecialisteRepository speRepo;
 
 	@Autowired
@@ -65,8 +69,8 @@ public class MedecinController {
 	    
 	    @GetMapping("/listMedecin")
 	    public String showMedecinList(Model model) {
-	    	Iterable<Medecin> listMedecin = medecinService.getMedecin();
-	        model.addAttribute("listMedecin", listMedecin);
+			Iterable<Medecin> listMedecin = medecinService.getMedecin();
+			model.addAttribute("listMedecin", listMedecin);
 
 			Iterable<Specialiste> listSpecialiste = specialisteService.getSpecialiste();
 			model.addAttribute("listSpecialiste", listSpecialiste);

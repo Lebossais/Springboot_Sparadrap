@@ -31,4 +31,5 @@ public class MedecinService {
 		Medecin savedMedecin = medecinRepository.save(medecin);
 		return savedMedecin;
 	}
+
 }

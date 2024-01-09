@@ -42,17 +42,18 @@
                 <td><span th:text="${medecin.Personne.Adresse.Adr_Numero_Rue} + ' ' +${medecin.Personne.Adresse.Adr_Nom_Rue}
                 + ' ' + ${medecin.Personne.Adresse.Adr_Code_Postal} + ' ' + ${medecin.Personne.Adresse.Adr_Ville}"> Adresse </span></td>
                 <td>
+
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary"
                             data-bs-toggle="modal" th:attr="data-bs-target=${'#editModalMed'+ medecin.Med_ID}"
                             data-row="${medecin}">Informations </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" th:each="medecin : ${listMedecin}" th:attr="id=${'editModalMed' + medecin.Med_ID}">
+                    <!--  Modal -->
+                    <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel0" aria-hidden="true" th:each="medecin : ${listMedecin}" th:attr="id=${'editModalMed' + medecin.Med_ID}">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Médecin</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel0">Médecin</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -113,7 +114,7 @@
                             data-bs-toggle="modal" th:attr="data-bs-target=${'#editModalSpe'+ specialiste.Spe_ID}"
                             data-row="${specialiste}">Informations </button>
 
-                    <!-- Modal -->
+                    <!--  Modal -->
                     <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true" th:each="specialiste : ${listSpecialiste}" th:attr="id=${'editModalSpe' + specialiste.Spe_ID}">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -127,7 +128,7 @@
                                     <span th:text="${specialiste.Personne.Per_Telephone}"> Numéro de Téléphone </span>
                                     <span th:text="${specialiste.Personne.Per_Email}"> Email </span>
                                     <span th:text="${specialiste.Personne.Adresse.Adr_Numero_Rue} + ' ' +${specialiste.Personne.Adresse.Adr_Nom_Rue}
-                                    + ' ' + ${specialiste.Personne.Adresse.Adr_Code_Postal} + ' ' + ${specialiste.Personne.Adresse.Adr_Ville}"> Adresse </span><
+                                    + ' ' + ${specialiste.Personne.Adresse.Adr_Code_Postal} + ' ' + ${specialiste.Personne.Adresse.Adr_Ville}"> Adresse </span>
                                 </div>
 
                                 <div class="modal-footer">
@@ -177,12 +178,13 @@
                     <td><span th:text="${mutuelle.Entreprise.Adresse.Adr_Numero_Rue} + ' ' +${mutuelle.Entreprise.Adresse.Adr_Nom_Rue}
                 + ' ' + ${mutuelle.Entreprise.Adresse.Adr_Code_Postal} + ' ' + ${mutuelle.Entreprise.Adresse.Adr_Ville}"> Adresse </span></td>
                     <td>
+
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary"
                                 data-bs-toggle="modal" th:attr="data-bs-target=${'#editModalMut'+ mutuelle.Mut_ID}"
                                 data-row="${mutuelle}">Informations </button>
 
-                        <!-- Modal -->
+                        <!--  Modal -->
                         <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true" th:each="mutuelle : ${listMutuelle}" th:attr="id=${'editModalMut' + mutuelle.Mut_ID}">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -191,13 +193,13 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <td><span th:text="${mutuelle.Entreprise.Ent_Raison_Sociale}"> Identité de la Mutuelle </span></td>
-                                        <td><span th:text="${mutuelle.Mut_Departement}"> Département </span></td>
-                                        <td><span th:text="${mutuelle.Mut_Prise_En_Charge} + ' %' "> Prise en charge Globale </span></td>
-                                        <td><span th:text="${mutuelle.Entreprise.Ent_Telephone}"> Numéro de Téléphone </span></td>
-                                        <td><span th:text="${mutuelle.Entreprise.Ent_Email}"> Email </span></td>
-                                        <td><span th:text="${mutuelle.Entreprise.Adresse.Adr_Numero_Rue} + ' ' +${mutuelle.Entreprise.Adresse.Adr_Nom_Rue}
-                + ' ' + ${mutuelle.Entreprise.Adresse.Adr_Code_Postal} + ' ' + ${mutuelle.Entreprise.Adresse.Adr_Ville}"> Adresse </span></td>
+                                        <span th:text="${mutuelle.Entreprise.Ent_Raison_Sociale}"> Identité de la Mutuelle </span>
+                                        <span th:text="${mutuelle.Mut_Departement}"> Département </span>
+                                        <span th:text="${mutuelle.Mut_Prise_En_Charge} + ' %' "> Prise en charge Globale </span>
+                                        <span th:text="${mutuelle.Entreprise.Ent_Telephone}"> Numéro de Téléphone </span>
+                                        <span th:text="${mutuelle.Entreprise.Ent_Email}"> Email </span>
+                                        <span th:text="${mutuelle.Entreprise.Adresse.Adr_Numero_Rue} + ' ' +${mutuelle.Entreprise.Adresse.Adr_Nom_Rue}
+                + ' ' + ${mutuelle.Entreprise.Adresse.Adr_Code_Postal} + ' ' + ${mutuelle.Entreprise.Adresse.Adr_Ville}"> Adresse </span>
                                     </div>
 
                                     <div class="modal-footer">
@@ -206,6 +208,8 @@
                                 </div>
                             </div>
                         </div>
+
+
 
                         <a th:href="@{/editMutuelle/{id}(id=${mutuelle.Mut_ID})}"><button class="btn btn-info">Modifier</button></a>
                         <a th:href="@{/deleteMutuelle/{id}(id=${mutuelle.Mut_ID})}"><button class="btn btn-danger">Supprimer</button></a>
