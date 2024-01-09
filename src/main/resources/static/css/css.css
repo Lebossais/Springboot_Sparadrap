@@ -24,7 +24,8 @@ body{
     align-items: center;
     justify-content: start;
     font-size: 250%;
-    margin-bottom: 1em;
+    margin-bottom: 0.7em;
+    margin-top: 1em;
 }
 
 .h2:before,
@@ -101,3 +102,68 @@ body{
 .info-box .active-panel {
     visibility: visible;
 }
+
+.debut{
+    font-size: 100%;
+    font-weight: bolder;
+    text-decoration: black;
+    color:black;
+    margin-bottom: 10px;
+}
+
+.tab2{
+    display: grid;
+    grid-template-columns: 28% 68%;
+    border: dashed black;
+}
+
+.colonne1{
+    border : solid red;
+    margin-right: 5%;
+}
+
+.choix{
+    font-size: 110%;
+    display: block;
+    font-family: inherit;
+    margin: 0;
+    box-sizing: border-box;
+    width: 80%;
+    padding: 5px;
+    height: 40px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    box-shadow: inset 1px 1px 3px #ccc;
+    border-radius: 5px;
+}
+
+.ligne2{
+    display: grid;
+    grid-template-rows: 40% 40% 8%;
+    border : dashed blue;
+}
+
+.tab{
+    border: solid black;
+    margin-top: 4%;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    font-size: 1rem;
+    top: 6px;
+    right: 10px;
+    position: absolute;
+}
+

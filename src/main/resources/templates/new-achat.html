@@ -1,0 +1,84 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+
+
+<div class="tab2">
+    <div class="colonne1">
+
+        <h2 class="h2">Date et Heure</h2>
+        <a> Faut la Date et heure réelle. A remplacer</a>
+
+        <h2 class="h2">Medecin</h2>
+        <select class="choix">
+            <option th:each="medecin: ${listMedecin}"
+                    th:text=" Dr +' ' + ${medecin.Personne.Per_Prenom} + ' ' + ${medecin.Personne.Per_Nom}"
+                    th:value="${Med_ID}"></option>
+        </select><br>
+
+        <h2 class="h2">Spécialiste</h2>
+        <select class="choix">
+            <option th:each="specialiste: ${listSpecialiste}"
+                    th:text=" Dr +' ' + ${specialiste.Personne.Per_Prenom} + ' ' + ${specialiste.Personne.Per_Nom}"
+                    th:value="${Spe_ID}"></option>
+        </select><br>
+
+        <h2 class="h2">Client</h2>
+        <select class="choix">
+            <option th:each="client: ${listClient}"
+                    th:text="${client.Personne.Per_Prenom} + ' ' + ${client.Personne.Per_Nom}"
+                    th:value="${Cli_ID}"></option>
+        </select><br>
+    </div>
+
+    <div class="ligne2">
+
+        <div class="tab">
+            <div class="container special" id="liste">
+                <h2 class="h2">Liste des Medicaments</h2>
+                <div class="table-responsive-sm">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Nom du Médicament</th>
+                            <th>Prix du médicament</th>
+                            <th>Catégorie</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:if="${listMedicament.empty}">
+                            <td colspan="3">Aucun Médicament en base de données</td>
+                        </tr>
+                        <tr th:each="medicament: ${listMedicament}">
+                            <td><span th:text="${medicament.Medi_Nom}"> Nom du Médicament </span></td>
+                            <td><span th:text="${medicament.Medi_Prix} + '.00 €'"> Prix de la boîte </span></td>
+                            <td><span th:text="${medicament.Categorie.Cat_Categorie}"> Catégorie </span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab">
+
+        </div>
+        <div class="tab">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>
