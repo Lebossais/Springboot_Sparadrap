@@ -1,9 +1,6 @@
 package com.sparadrap.webapp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
@@ -11,11 +8,13 @@ import lombok.Data;
 public class Panier {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Panier_ID;
+
 	@ManyToOne
 	@JoinColumn(name="Achat_ID")
 	private Achat Achat;
-	
-	@Id
+
 	@ManyToOne
 	@JoinColumn(name="Medi_ID")
     private Medicament Medicament;

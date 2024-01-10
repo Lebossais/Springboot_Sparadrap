@@ -25,7 +25,7 @@ body{
     justify-content: start;
     font-size: 250%;
     margin-bottom: 0.7em;
-    margin-top: 1em;
+    margin-top: 0.7em;
 }
 
 .h2:before,
@@ -114,12 +114,13 @@ body{
 .tab2{
     display: grid;
     grid-template-columns: 28% 68%;
-    border: dashed black;
+  /*  border: dashed black;*/
 }
 
 .colonne1{
-    border : solid red;
-    margin-right: 5%;
+  /*  border : solid black;*/
+    border-right: solid black;
+   /* margin-right: 5%;*/
 }
 
 .choix{
@@ -141,13 +142,28 @@ body{
 
 .ligne2{
     display: grid;
-    grid-template-rows: 40% 40% 8%;
-    border : dashed blue;
+    grid-template-rows: 10% 30% 10% 30% 8%;
+   /* border : dashed blue;*/
 }
+/*
+.titre{
+   border: solid black;
+}*/
 
 .tab{
-    border: solid black;
-    margin-top: 4%;
+    border-right: solid black;
+    border-top: solid black;
+    border-bottom: solid black;
+    margin-top: 2%;
+    overflow-y: scroll;
+}
+
+.tabPanier{
+    border-right: solid black;
+    border-top: solid black;
+    border-bottom: solid black;
+    margin-top: 2%;
+    overflow-y: scroll;
 }
 
 select {
@@ -167,3 +183,8 @@ select {
     position: absolute;
 }
 
+th{
+    position: sticky;
+    top: 0px;
+    background-color: white;
+}

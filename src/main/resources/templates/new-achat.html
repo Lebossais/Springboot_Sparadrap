@@ -36,9 +36,11 @@
 
     <div class="ligne2">
 
+        <div class="titre">
+        <h2 class="h2">Liste des Medicaments</h2>
+        </div>
         <div class="tab">
-            <div class="container special" id="liste">
-                <h2 class="h2">Liste des Medicaments</h2>
+            <div class="container-fluid" id="liste">
                 <div class="table-responsive-sm">
                     <table class="table table-bordered">
                         <thead>
@@ -56,17 +58,39 @@
                             <td><span th:text="${medicament.Medi_Nom}"> Nom du Médicament </span></td>
                             <td><span th:text="${medicament.Medi_Prix} + '.00 €'"> Prix de la boîte </span></td>
                             <td><span th:text="${medicament.Categorie.Cat_Categorie}"> Catégorie </span></td>
+                            <td>
+                                <button class="ajouterPanier">Ajouter au panier</button>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="tab">
 
+        <div class="titre">
+            <h2 class="h2">Panier </h2>
         </div>
-        <div class="tab">
-
+        <div class="tabPanier">
+            <table id="panierTable" class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Nom du Médicament</th>
+                    <th>Quantité</th>
+                    <th>Prix unitaire</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody id="panierBody">
+                <!-- Le panier est vide pour le moment -->
+                <tr>
+                    <td colspan="4">Votre panier est vide.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="titre">
+            <button> VALIDATION</button>
         </div>
     </div>
 </div>
@@ -80,5 +104,9 @@
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+
+<script
+        src="/js/panier.js"></script>
+
 </body>
 </html>

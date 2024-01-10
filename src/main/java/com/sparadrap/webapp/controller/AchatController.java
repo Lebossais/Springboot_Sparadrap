@@ -47,7 +47,11 @@ public class AchatController {
 	@Autowired
 	private MedicamentRepository mediRepo;
 
+	@Autowired
+	private PanierRepository panierRepo;
 
+	@Autowired
+	private PanierService panierService;
 	
 	@GetMapping("/home")
 	public String Home() {
@@ -67,6 +71,9 @@ public class AchatController {
 
 		Iterable<Medicament> listMedicament = medicamentService.getMedicament();
 		model.addAttribute("listMedicament", listMedicament);
+
+		Iterable<Panier> listPanier = panierService.getPanier();
+		model.addAttribute("listPanier", listPanier);
 
 		return "new-achat";
     }

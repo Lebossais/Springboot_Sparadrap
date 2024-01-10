@@ -25,7 +25,6 @@ public class Client {
 	private Integer Cli_Numero_Secu;
 	
 	@ManyToOne
-	// @PrimaryKeyJoinColumn()
 	@JoinColumn(name="Mut_ID")
 	private Mutuelle Mutuelle;
 	
