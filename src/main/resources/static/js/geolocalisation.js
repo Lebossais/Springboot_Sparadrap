@@ -39,13 +39,12 @@ function callOpenWeatherAPI(latitude, longitude) {
             const iconCode = data.weather[0].icon;
             const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
 
-
             weatherDataElement.innerHTML = `
+
         <p>Ville: ${data.name}</p>
-        <p>Température: ${data.main.temp} °C</p>
-        <p>Humidité: ${data.main.humidity} %</p>
-        <img src="${iconUrl}" alt="Icone météo">
-      `;
+        <p>Température: ${data.main.temp}°C</p>
+        <p>Humidité: ${data.main.humidity}% <img src="${iconUrl}" alt="Icone météo"> </p>     
+            `;
         })
         .catch(error => {
             // Gérer les erreurs de la requête vers l'API OpenWeather

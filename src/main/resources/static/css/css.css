@@ -194,3 +194,8 @@ th{
     top: 0px;
     background-color: white;
 }
+
+.valid{
+    float:right;
+    margin: 15px 10px 10px 10px;
+}
