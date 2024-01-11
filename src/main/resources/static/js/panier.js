@@ -1,42 +1,32 @@
 localStorage.clear();
 
-// Récupérer tous les boutons "Ajouter au panier"
 const buttons = document.querySelectorAll('.ajouterPanier');
 
 buttons.forEach(button => {
     button.addEventListener('click', event => {
-        // Récupérer la ligne tr parente du bouton cliqué
         const row = event.target.closest('tr');
 
-        // Récupérer les informations du médicament à partir des balises span dans la ligne
         const nomMedicament = row.querySelector('td:nth-child(1) span').innerText;
         const prixMedicament = parseFloat(row.querySelector('td:nth-child(2) span').innerText);
 
-        // Créer un objet représentant le médicament à ajouter au panier
         const medicamentToAdd = {
             Medi_Nom: nomMedicament,
             Medi_Prix: prixMedicament,
-            quantity: 1 // Initialiser la quantité à 1 par défaut
+            quantity: 1
         };
 
-        // Récupérer le panier depuis le localStorage
         let panier = JSON.parse(localStorage.getItem('panier')) || [];
 
-        // Vérifier si le médicament est déjà dans le panier
         const existingItem = panier.find(item => item.Medi_Nom === medicamentToAdd.Medi_Nom);
 
         if (existingItem) {
-            // Si le médicament est déjà dans le panier, augmenter la quantité
-            existingItem.quantity++;
+           existingItem.quantity++;
         } else {
-            // Sinon, ajouter le médicament avec une quantité de 1
-            panier.push(medicamentToAdd);
+             panier.push(medicamentToAdd);
         }
 
-        // Mettre à jour le panier dans le localStorage
         localStorage.setItem('panier', JSON.stringify(panier));
 
-        // Actualiser l'affichage du panier (mettez à jour le tableau HTML)
         refreshPanierDisplay();
     });
 });
@@ -44,19 +34,17 @@ buttons.forEach(button => {
 // Fonction pour rafraîchir l'affichage du panier
 function refreshPanierDisplay() {
     const panierTableBody = document.getElementById('panierBody');
-    panierTableBody.innerHTML = ''; // Effacer le contenu actuel du tableau
+    panierTableBody.innerHTML = '';
 
     let panier = JSON.parse(localStorage.getItem('panier')) || [];
 
     if (panier.length === 0) {
-        // Si le panier est vide, afficher un message approprié
         panierTableBody.innerHTML = `
             <tr>
                 <td colspan="4">Votre panier est vide.</td>
             </tr>
         `;
     } else {
-        // Sinon, afficher chaque élément du panier dans le tableau
         panier.forEach(item => {
             const totalPrice = item.Medi_Prix * item.quantity;
 
@@ -72,3 +60,27 @@ function refreshPanierDisplay() {
     }
 }
 
+// Gestion de l'affichage de la Date et Heure en temps réel.
+var d = new Date();
+
+
+var timerRunning = false;
+function runClock()
+{
+    var today   = new Date();
+    var date = today.getFullYear()+' / '+today.getDate()+' / '+(today.getMonth()+1);
+    var hours   = today.getHours();
+    var minutes = today.getMinutes();
+    var seconds = today.getSeconds();
+    var timeValue = date + '  -  ' + hours;
+
+    // Les deux prochaines conditions ne servent que pour l'affichage.
+    // Si le nombre de minutes est inférieur à 10, alors on ajoute un 0 devant...
+
+    timeValue += ((minutes < 10) ? ":0" : ":") + minutes;
+    timeValue += ((seconds < 10) ? ":0" : ":") + seconds;
+    document.getElementById("time").value = timeValue;
+    timerRunning = true;
+}
+
+var timerID = setInterval(runClock,1000);

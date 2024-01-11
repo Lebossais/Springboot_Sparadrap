@@ -10,23 +10,23 @@
     <div class="colonne1">
 
         <h2 class="h2">Date et Heure</h2>
-        <a> Faut la Date et heure réelle. A remplacer</a>
+        <input type="text" class="choix" id="time" />
 
-        <h2 class="h2">Medecin</h2>
+        <h2 class="h2" style="font-size: 200%">Medecin</h2>
         <select class="choix">
             <option th:each="medecin: ${listMedecin}"
                     th:text=" Dr +' ' + ${medecin.Personne.Per_Prenom} + ' ' + ${medecin.Personne.Per_Nom}"
                     th:value="${Med_ID}"></option>
         </select><br>
 
-        <h2 class="h2">Spécialiste</h2>
+        <h2 class="h2" style="font-size: 200%">Spécialiste</h2>
         <select class="choix">
             <option th:each="specialiste: ${listSpecialiste}"
                     th:text=" Dr +' ' + ${specialiste.Personne.Per_Prenom} + ' ' + ${specialiste.Personne.Per_Nom}"
                     th:value="${Spe_ID}"></option>
         </select><br>
 
-        <h2 class="h2">Client</h2>
+        <h2 class="h2" style="font-size: 200%">Client</h2>
         <select class="choix">
             <option th:each="client: ${listClient}"
                     th:text="${client.Personne.Per_Prenom} + ' ' + ${client.Personne.Per_Nom}"
