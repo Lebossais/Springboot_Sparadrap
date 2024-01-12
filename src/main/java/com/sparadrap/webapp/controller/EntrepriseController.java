@@ -36,7 +36,7 @@ public class EntrepriseController {
 	        }
 	        
 	        entrepriseService.saveEntreprise(entreprise);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	    
 	    @GetMapping("/listEntreprise")
@@ -64,13 +64,13 @@ public class EntrepriseController {
 	        }
 	            
 	        repo.save(entreprise);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	        
 	    @GetMapping("/deleteEntreprise/{id}")
 	    public String deleteEntreprise(@PathVariable("id") long id, Model model) {
 	        entrepriseService.deleteEntreprise(id);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 
 }

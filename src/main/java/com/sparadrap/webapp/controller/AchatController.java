@@ -52,11 +52,6 @@ public class AchatController {
 
 	@Autowired
 	private PanierService panierService;
-	
-	@GetMapping("/home")
-	public String Home() {
-		return "home";
-	}
 
 	@GetMapping("/newAchat")
     public String showSignUpForm(Achat achat, Model model) {
@@ -85,7 +80,7 @@ public class AchatController {
 	        }
 	        
 	        achatService.saveAchat(achat);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	    
 	    @GetMapping("/listAchat")
@@ -113,13 +108,13 @@ public class AchatController {
 	        }
 	            
 	        repo.save(achat);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	        
 	    @GetMapping("/deleteAchat/{id}")
 	    public String deleteAchat(@PathVariable("id") long id, Model model) {
 	        achatService.deleteAchat(id);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 
 }

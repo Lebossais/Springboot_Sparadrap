@@ -36,7 +36,7 @@ public class MutuelleController {
 	        }
 	        
 	        mutuelleService.saveMutuelle(mutuelle);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	    
 	    @GetMapping("/listMutuelle")
@@ -64,13 +64,13 @@ public class MutuelleController {
 	        }
 	            
 	        repo.save(mutuelle);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	        
 	    @GetMapping("/deleteMutuelle/{id}")
 	    public String deleteMutuelle(@PathVariable("id") long id, Model model) {
 	        mutuelleService.deleteMutuelle(id);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 
 }

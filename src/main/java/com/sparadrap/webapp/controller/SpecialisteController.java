@@ -42,7 +42,7 @@ public class SpecialisteController {
 	        }
 	        
 	        specialisteService.saveSpecialiste(specialiste);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	    
 	    @GetMapping("/listSpecialiste")
@@ -70,13 +70,13 @@ public class SpecialisteController {
 	        }
 	            
 	        repo.save(specialiste);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	        
 	    @GetMapping("/deleteSpecialiste/{id}")
 	    public String deleteSpecialiste(@PathVariable("id") long id, Model model) {
 	    	specialisteService.deleteSpecialiste(id);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 
 }

@@ -36,7 +36,7 @@ public class AdresseController {
 	        }
 	        
 	        adresseService.saveAdresse(adresse);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	    
 	    @GetMapping("/listAdresse")
@@ -64,13 +64,13 @@ public class AdresseController {
 	        }
 	            
 	        repo.save(adresse);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	        
 	    @GetMapping("/deleteAdresse/{id}")
 	    public String deleteAdresse(@PathVariable("id") long id, Model model) {
 	        adresseService.deleteAdresse(id);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 
 }

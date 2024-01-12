@@ -54,7 +54,7 @@ public class ClientController {
 	        }
 	        
 	        clientService.saveClient(client);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	    
 	    @GetMapping("/listClient")
@@ -88,13 +88,13 @@ public class ClientController {
 	        }
 	            
 	        repo.save(client);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	        
 	    @GetMapping("/deleteClient/{id}")
 	    public String deleteClient(@PathVariable("id") long id, Model model) {
 	        clientService.deleteClient(id);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 
 }

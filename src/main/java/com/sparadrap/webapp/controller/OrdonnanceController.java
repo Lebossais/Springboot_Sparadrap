@@ -36,7 +36,7 @@ public class OrdonnanceController {
 	        }
 	        
 	        ordonnanceService.saveOrdonnance(ordonnance);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	    
 	    @GetMapping("/listOrdonnance")
@@ -64,13 +64,13 @@ public class OrdonnanceController {
 	        }
 	            
 	        repo.save(ordonnance);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	        
 	    @GetMapping("/deleteOrdonnance/{id}")
 	    public String deleteOrdonnance(@PathVariable("id") long id, Model model) {
 	        ordonnanceService.deleteOrdonnance(id);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 
 }

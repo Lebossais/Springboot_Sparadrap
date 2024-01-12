@@ -45,7 +45,7 @@ public class MedicamentController {
 	        }
 	        
 	        medicamentService.saveMedicament(medicament);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	    
 	    @GetMapping("/listMedicament")
@@ -76,13 +76,13 @@ public class MedicamentController {
 	        }
 	            
 	        repo.save(medicament);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	        
 	    @GetMapping("/deleteMedicament/{id}")
 	    public String deleteMedicament(@PathVariable("id") long id, Model model) {
 	        medicamentService.deleteMedicament(id);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 
 }

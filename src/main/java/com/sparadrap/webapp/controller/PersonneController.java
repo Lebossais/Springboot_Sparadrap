@@ -41,7 +41,7 @@ public class PersonneController {
 	        }
 	        
 	        personneService.savePersonne(personne);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	    
 	    @GetMapping("/listPersonne")
@@ -69,13 +69,13 @@ public class PersonneController {
 	        }
 	            
 	        repo.save(personne);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	        
 	    @GetMapping("/deletePersonne/{id}")
 	    public String deletePersonne(@PathVariable("id") long id, Model model) {
 	    	personneService.deletePersonne(id);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 
 }

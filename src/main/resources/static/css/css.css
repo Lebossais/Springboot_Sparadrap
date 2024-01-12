@@ -199,3 +199,10 @@ th{
     float:right;
     margin: 15px 10px 10px 10px;
 }
+
+.connexion-block{
+    text-align: center;
+    width: max-content;
+    margin: 25% 0% 0% 40%;
+    border: double;
+}

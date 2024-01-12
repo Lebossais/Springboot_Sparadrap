@@ -36,7 +36,7 @@ public class CategorieController {
 	        }
 	        
 	        categorieService.saveCategorie(categorie);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	    
 	    @GetMapping("/listCategorie")
@@ -64,13 +64,13 @@ public class CategorieController {
 	        }
 	            
 	        repo.save(categorie);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 	        
 	    @GetMapping("/deleteCategorie/{id}")
 	    public String deleteCategorie(@PathVariable("id") long id, Model model) {
 	        categorieService.deleteCategorie(id);
-	        return "redirect:/";
+	        return "redirect:/home";
 	    }
 
 }
