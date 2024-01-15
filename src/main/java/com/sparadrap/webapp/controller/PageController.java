@@ -18,10 +18,10 @@ public class PageController {
         return "home";
     }
 
-
-    @GetMapping("/connexion")
-    public String Connexion(){
-        return "connexion";
+    @GetMapping("/maps")
+    public String Maps(){
+        return "maps";
     }
 
 }
+

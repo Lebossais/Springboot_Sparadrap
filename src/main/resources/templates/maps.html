@@ -1,0 +1,25 @@
+<html>
+<head>
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps.css"
+    />
+    <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.25.0/maps/maps-web.min.js"></script>
+</head>
+<body style="width: 100%; height: 100%; margin: 0; padding: 0;">
+<div id="map" style="width: 100%; height: 100%;"></div>
+<script>
+    var Adresse = [-121.91595, 37.36729]
+
+    var map = tt.map({
+        key: "AStjNe5G4GbXyt7MFGIANXrmBrAPEzh7",
+        container: "map",
+        center: Adresse,
+        zoom: 15,
+    })
+
+    var marker = new tt.Marker().setLngLat(Adresse).addTo(map)
+</script>
+</body>
+</html>
