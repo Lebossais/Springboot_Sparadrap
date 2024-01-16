@@ -1,5 +1,14 @@
 package com.sparadrap.webapp.controller;
 
+import com.sparadrap.webapp.model.Achat;
+import com.sparadrap.webapp.model.Compose;
+import com.sparadrap.webapp.model.Panier;
+import com.sparadrap.webapp.repository.AchatRepository;
+import com.sparadrap.webapp.repository.ComposeRepository;
+import com.sparadrap.webapp.repository.PanierRepository;
+import com.sparadrap.webapp.service.AchatService;
+import com.sparadrap.webapp.service.ComposeService;
+import com.sparadrap.webapp.service.PanierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +32,25 @@ public class OrdonnanceController {
 	
 	@Autowired
 	private OrdonnanceRepository repo;
-	    
+
+	@Autowired
+	private ComposeService composeService;
+
+	@Autowired
+	private ComposeRepository composeRepo;
+
+	@Autowired
+	private AchatService achatService;
+
+	@Autowired
+	private AchatRepository achatRepo;
+
+	@Autowired
+	private PanierService panierService;
+
+	@Autowired
+	private PanierRepository panierRepo;
+
 	@GetMapping("/signupOrdonnance")
     public String showSignUpForm(Ordonnance ordonnance) {
         return "form-new/formNewOrdonnance";
@@ -43,7 +70,16 @@ public class OrdonnanceController {
 	    public String showOrdonnanceList(Model model) {
 	    	Iterable<Ordonnance> listOrdonnance = ordonnanceService.getOrdonnance();
 	        model.addAttribute("listOrdonnance", listOrdonnance);
-	        
+
+			Iterable<Compose> listCompose = composeService.getCompose();
+			model.addAttribute("listCompose", listCompose);
+
+			Iterable<Achat> listAchat = achatService.getAchat();
+			model.addAttribute("listAchat",listAchat);
+
+			Iterable<Panier> listPanier = panierService.getPanier();
+			model.addAttribute("listPanier", listPanier);
+
 	        return "list/listOrdonnance";
 	    }
 	    

@@ -12,7 +12,7 @@ public class Compose {
 	private Long Comp_ID;
 
 	@ManyToOne
-	@JoinColumn(name="Med_ID")
+	@JoinColumn(name="Ord_ID")
 	private Ordonnance Ordonnance;
 
 	@ManyToOne

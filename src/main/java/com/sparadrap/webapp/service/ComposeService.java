@@ -18,7 +18,7 @@ public class ComposeService {
         return composeRepository.findById(id).get();
     }
 
-    public Iterable<Compose> getClient() {
+    public Iterable<Compose> getCompose() {
         return composeRepository.findAll();
     }
 
