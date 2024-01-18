@@ -2,7 +2,7 @@ const MapsElement = document.getElementById('map')
 
 let center = [4, 44.4]
 const map = tt.map({
-    key : "AStjNe5G4GbXyt7MFGIANXrmBrAPEzh7",
+    key : "",
     container: "map",
     center:center,
     zoom: 10
