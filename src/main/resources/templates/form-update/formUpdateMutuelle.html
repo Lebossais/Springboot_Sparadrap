@@ -1,0 +1,57 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+<div class="container special">
+
+    <h2 class="h2">Modification d'une Mutuelle</h2>
+    <div>
+        <form action="#"
+              th:action="@{/updateMutuelle/{id}(id=${mutuelle.Mut_ID})}"
+              th:object="${mutuelle}"
+              method="post">
+            <div class="form-group">
+                <input type="hidden" th:field="*{Mut_ID}" class="form-control">
+            </div>
+
+            <!--  CHOIX DE L'ENTREPRISE -->
+
+            <div class="form-group">
+                <label for="mut">Mutuelle :</label>
+                <select class="form-control" id="mut" th:field="*{Entreprise}">
+                    <option value="">Select Mutuelle</option>
+                    <option th:each="entreprise : ${listEntreprise}" th:value="${entreprise.Ent_ID}"
+                            th:text="${entreprise.Ent_Raison_Sociale}">
+                    </option>
+                </select>
+                <small id="Ent_IDHelp" class="form-text text-muted">Merci de choisir l'Entreprise de la Mutuelle</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Mut_Departement">Département de référence</label>
+                <input type="text" th:field="*{Mut_Departement}" id="Mut_Departement" placeholder="Mut_Departement" class="form-control">
+                <span th:if="${#fields.hasErrors('Mut_Departement')}" th:errors="*{Mut_Departement}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Mut_Prise_En_Charge">Prise en Charge</label>
+                <input type="text" th:field="*{Mut_Prise_En_Charge}" id="Mut_Prise_En_Charge" placeholder="Mut_Prise_En_Charge" class="form-control">
+                <span th:if="${#fields.hasErrors('Mut_Prise_En_Charge')}" th:errors="*{Mut_Prise_En_Charge}"></span>
+            </div>
+
+            <input type="submit" value="Update Mutuelle">
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

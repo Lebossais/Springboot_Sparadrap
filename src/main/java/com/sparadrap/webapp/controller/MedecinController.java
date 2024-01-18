@@ -1,6 +1,7 @@
 package com.sparadrap.webapp.controller;
 
 import com.sparadrap.webapp.model.Mutuelle;
+import com.sparadrap.webapp.model.Personne;
 import com.sparadrap.webapp.model.Specialiste;
 import com.sparadrap.webapp.repository.MutuelleRepository;
 import com.sparadrap.webapp.repository.PersonneRepository;
@@ -50,7 +51,6 @@ public class MedecinController {
 	@Autowired
 	private MutuelleRepository mutRepo;
 
-	    
 	@GetMapping("/signupMedecin")
     public String showSignUpForm(Medecin medecin, Model model) {
 		model.addAttribute("listPersonne", perRepo.findAll());
@@ -84,8 +84,11 @@ public class MedecinController {
 	    @GetMapping("/editMedecin/{id}")
 	    public String showUpdateForm(@PathVariable("id") long id, Model model) {
 	    	Medecin medecin = medecinService.getMedecin(id);
-	        
-	        model.addAttribute("medecin", medecin);
+
+			Iterable<Personne> listPersonne = perService.getPersonne();
+			model.addAttribute("listPersonne", listPersonne);
+
+			model.addAttribute("medecin", medecin);
 	        return "form-update/formUpdateMedecin";
 	    }
 	    

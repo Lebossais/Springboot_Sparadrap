@@ -1,5 +1,8 @@
 package com.sparadrap.webapp.controller;
 
+import com.sparadrap.webapp.model.Entreprise;
+import com.sparadrap.webapp.repository.EntrepriseRepository;
+import com.sparadrap.webapp.service.EntrepriseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +26,12 @@ public class MutuelleController {
 	
 	@Autowired
 	private MutuelleRepository repo;
+
+	@Autowired
+	private EntrepriseService entrepriseService;
+
+	@Autowired
+	private EntrepriseRepository mutRepo;
 	    
 	@GetMapping("/signupMutuelle")
     public String showSignUpForm(Mutuelle mutuelle) {
@@ -50,9 +59,12 @@ public class MutuelleController {
 	    @GetMapping("/editMutuelle/{id}")
 	    public String showUpdateForm(@PathVariable("id") long id, Model model) {
 	    	Mutuelle mutuelle = mutuelleService.getMutuelle(id);
-	        
-	        model.addAttribute("mutuelle", mutuelle);
-	        return "formUpdateMutuelle";
+
+			Iterable<Entreprise> listEntreprise = entrepriseService.getEntreprise();
+			model.addAttribute("listEntreprise", listEntreprise);
+
+			model.addAttribute("mutuelle", mutuelle);
+	        return "form-update/formUpdateMutuelle";
 	    }
 	    
 	    @PostMapping("/updateMutuelle/{id}")
@@ -60,7 +72,7 @@ public class MutuelleController {
 	      BindingResult result, Model model) {
 	        if (result.hasErrors()) {
 	        	mutuelle.setMut_ID(id);
-	            return "formUpdateMutuelle";
+	            return "form-update/formUpdateMutuelle";
 	        }
 	            
 	        repo.save(mutuelle);

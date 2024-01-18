@@ -1,11 +1,8 @@
 package com.sparadrap.webapp.controller;
 
-import com.sparadrap.webapp.model.Adresse;
-import com.sparadrap.webapp.model.Personne;
-import com.sparadrap.webapp.repository.AdresseRepository;
-import com.sparadrap.webapp.repository.PersonneRepository;
-import com.sparadrap.webapp.service.AdresseService;
-import com.sparadrap.webapp.service.PersonneService;
+import com.sparadrap.webapp.model.*;
+import com.sparadrap.webapp.repository.*;
+import com.sparadrap.webapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import com.sparadrap.webapp.model.Client;
-import com.sparadrap.webapp.repository.ClientRepository;
-import com.sparadrap.webapp.service.ClientService;
 
 import lombok.Data;
 
@@ -41,6 +34,25 @@ public class ClientController {
 
 	@Autowired
 	private AdresseRepository adrRepo;
+
+	@Autowired
+	private SpecialisteService specialisteService;
+
+	@Autowired
+	private SpecialisteRepository speRepo;
+
+	@Autowired
+	private MedecinService medecinService;
+
+	@Autowired
+	private MedecinRepository medecinRepo;
+
+	@Autowired
+	private MutuelleService mutuelleService;
+
+	@Autowired
+	private MutuelleRepository mutRepo;
+
 
 	@GetMapping("/signupClient")
     public String showSignUpForm(Client client) {
@@ -74,7 +86,19 @@ public class ClientController {
 	    @GetMapping("/editClient/{id}")
 	    public String showUpdateForm(@PathVariable("id") long id, Model model) {
 	    	Client client = clientService.getClient(id);
-	        
+
+			Iterable<Personne> listPersonne = personneService.getPersonne();
+			model.addAttribute("listPersonne", listPersonne);
+
+			Iterable<Medecin> listMedecin = medecinService.getMedecin();
+			model.addAttribute("listMedecin", listMedecin);
+
+			Iterable<Specialiste> listSpecialiste = specialisteService.getSpecialiste();
+			model.addAttribute("listSpecialiste", listSpecialiste);
+
+			Iterable<Mutuelle> listMutuelle = mutuelleService.getMutuelle();
+			model.addAttribute("listMutuelle", listMutuelle);
+
 	        model.addAttribute("client", client);
 	        return "form-update/formUpdateClient";
 	    }

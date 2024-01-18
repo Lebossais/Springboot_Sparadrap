@@ -63,8 +63,16 @@ public class MedicamentController {
 	    public String showUpdateForm(@PathVariable("id") long id, Model model) {
 	    	Medicament medicament = medicamentService.getMedicament(id);
 	        
-	        model.addAttribute("medicament", medicament);
-	        return "form-update/formUpdateMedicament";
+			model.addAttribute("medicament", medicament);
+
+			Iterable<Medicament> listMedicament = medicamentService.getMedicament();
+			model.addAttribute("listMedicament", listMedicament);
+
+
+			Iterable<Categorie> listCategorie = categorieService.getCategorie();
+			model.addAttribute("listCategorie", listCategorie);
+
+			return "form-update/formUpdateMedicament";
 	    }
 	    
 	    @PostMapping("/updateMedicament/{id}")

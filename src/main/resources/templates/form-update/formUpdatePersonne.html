@@ -1,0 +1,70 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+    <div class="container special">
+
+    <h2 class="h2">Modification d'une Personne</h2>
+    <div>
+        <form action="#"
+              th:action="@{/updatePersonne/{id}(id=${personne.Per_ID})}"
+              th:object="${personne}"
+              method="post">
+            <div class="form-group">
+            <input type="hidden" th:field="*{Per_ID}" class="form-control">
+            </div>
+
+        <div class="form-group">
+            <label for="Per_Prenom">Prénom</label>
+            <input type="text" th:field="*{Per_Prenom}" id="Per_Prenom" placeholder="Per_Prenom" class="form-control">
+            <span th:if="${#fields.hasErrors('Per_Prenom')}" th:errors="*{Per_Prenom}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Per_Nom">Nom</label>
+            <input type="text" th:field="*{Per_Nom}" id="Per_Nom" placeholder="Per_Nom" class="form-control">
+            <span th:if="${#fields.hasErrors('Per_Nom')}" th:errors="*{Per_Nom}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Per_Telephone">Téléphone</label>
+            <input type="text" th:field="*{Per_Telephone}" id="Per_Telephone" placeholder="Per_Telephone" class="form-control">
+            <span th:if="${#fields.hasErrors('Per_Telephone')}" th:errors="*{Per_Telephone}"></span>
+        </div>
+
+         <div class="form-group">
+            <label for="Per_Email">Email</label>
+            <input type="text" th:field="*{Per_Email}" id="Per_Email" placeholder="Per_Email" class="form-control">
+            <span th:if="${#fields.hasErrors('Per_Email')}" th:errors="*{Per_Email}"></span>
+        </div>
+
+            <!--  CHOIX DE L'ADRESSE -->
+
+            <div class="form-group">
+                <label for="adr">Adresse :</label>
+                <select class="form-control" id="adr" th:field="*{Adresse}">
+                    <option value="">Select Adresse</option>
+                    <option th:each="adresse : ${listAdresse}" th:value="${adresse.Adr_ID}"
+                            th:text="${adresse.Adr_Numero_Rue} + ' ' + ${adresse.Adr_Nom_Rue} + ' ' + ${adresse.Adr_Code_Postal} + ' ' + ${adresse.Adr_Ville} ">
+                    </option>
+                </select>
+                <small id="Adr_IDHelp" class="form-text text-muted">Merci de choisir l'Adresse</small>
+            </div>
+
+
+            <input type="submit" value="Update Personne">
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

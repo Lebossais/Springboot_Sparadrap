@@ -1,6 +1,8 @@
 package com.sparadrap.webapp.controller;
 
+import com.sparadrap.webapp.model.Personne;
 import com.sparadrap.webapp.repository.PersonneRepository;
+import com.sparadrap.webapp.service.PersonneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,9 @@ public class SpecialisteController {
 	@Autowired
 	private PersonneRepository perRepo;
 
+	@Autowired
+	private PersonneService personneService;
+
 	@GetMapping("/signupSpecialiste")
     public String showSignUpForm(Specialiste specialiste, Model model) {
 		model.addAttribute("listPersonne", perRepo.findAll());
@@ -56,8 +61,11 @@ public class SpecialisteController {
 	    @GetMapping("/editSpecialiste/{id}")
 	    public String showUpdateForm(@PathVariable("id") long id, Model model) {
 	    	Specialiste specialiste = specialisteService.getSpecialiste(id);
-	        
-	        model.addAttribute("specialiste", specialiste);
+
+			Iterable<Personne> listPersonne = personneService.getPersonne();
+			model.addAttribute("listPersonne", listPersonne);
+
+			model.addAttribute("specialiste", specialiste);
 	        return "form-update/formUpdateSpecialiste";
 	    }
 	    

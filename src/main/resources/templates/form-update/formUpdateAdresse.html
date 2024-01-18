@@ -6,30 +6,41 @@
 <div th:replace="~{navbar :: nav2}"/>
 	<div class="container special">
 
-		<h2 class="h2">Modification d'une Adresse</h2>
-		<div>
-			<form action="#" 
-  th:action="@{/updateAdresse/{id}(id=${adresse.Adr_ID})}" 
-  th:object="${adresse}" 
-  method="post">
-  <input type="hidden" th:field="*{Adr_ID}" class="form-control">
-    <label for="Adr_Numero_Rue">Numéro Rue</label>
-    <input type="text" th:field="*{Adr_Numero_Rue}" id="Adr_Numero_Rue" placeholder="Adr_Numero_Rue">
-    <span th:if="${#fields.hasErrors('Adr_Numero_Rue')}" th:errors="*{Adr_Numero_Rue}"></span>
-    <label for="Adr_Nom_Rue">Adr_Nom_Rue</label>
-    <input type="text" th:field="*{Adr_Nom_Rue}" id="Adr_Nom_Rue" placeholder="Adr_Nom_Rue">
-    <span th:if="${#fields.hasErrors('Adr_Nom_Rue')}" th:errors="*{Adr_Nom_Rue}"></span>
-    <label for="Adr_Code_Postal">Adr_Code_Postal</label>
-    <input type="text" th:field="*{Adr_Code_Postal}" id="Adr_Code_Postal" placeholder="Adr_Code_Postal">
-    <span th:if="${#fields.hasErrors('Adr_Code_Postal')}" th:errors="*{Adr_Code_Postal}"></span>
-    <label for="Adr_Ville">Adr_Ville</label>
-    <input type="text" th:field="*{Adr_Ville}" id="Adr_Ville" placeholder="Adr_Ville">
-    <span th:if="${#fields.hasErrors('Adr_Ville')}" th:errors="*{Adr_Ville}"></span>
-    <input type="submit" value="Update Adresse">   
-</form>
-		</div>
+	<h2 class="h2">Modification d'une Adresse</h2>
+	<div>
+		<form action="#"
+        th:action="@{/updateAdresse/{id}(id=${adresse.Adr_ID})}"
+        th:object="${adresse}"
+        method="post">
+            <input type="hidden" th:field="*{Adr_ID}" class="form-control">
 
+    <div class="form-group">
+        <label for="Adr_Numero_Rue">Numéro Rue :</label>
+        <input type="text" th:field="*{Adr_Numero_Rue}" id="Adr_Numero_Rue" placeholder="Adr_Numero_Rue" class="form-control">
+        <span th:if="${#fields.hasErrors('Adr_Numero_Rue')}" th:errors="*{Adr_Numero_Rue}"></span>
+        </div>
+
+    <div class="form-group">
+        <label for="Adr_Nom_Rue">Nom de Rue :</label>
+        <input type="text" th:field="*{Adr_Nom_Rue}" id="Adr_Nom_Rue" placeholder="Adr_Nom_Rue" class="form-control">
+        <span th:if="${#fields.hasErrors('Adr_Nom_Rue')}" th:errors="*{Adr_Nom_Rue}"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Adr_Code_Postal">Code Postal :</label>
+        <input type="text" th:field="*{Adr_Code_Postal}" id="Adr_Code_Postal" placeholder="Adr_Code_Postal" class="form-control">
+        <span th:if="${#fields.hasErrors('Adr_Code_Postal')}" th:errors="*{Adr_Code_Postal}"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Adr_Ville">Ville :</label>
+        <input type="text" th:field="*{Adr_Ville}" id="Adr_Ville" placeholder="Adr_Ville" class="form-control">
+        <span th:if="${#fields.hasErrors('Adr_Ville')}" th:errors="*{Adr_Ville}"></span>
+
+        <input type="submit" value="Update Adresse">
+        </form>
 	</div>
+</div>
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

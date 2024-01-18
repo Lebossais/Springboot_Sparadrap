@@ -1,0 +1,51 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+<div class="container special">
+
+    <h2 class="h2">Modification d'un Médecin</h2>
+    <div>
+        <form action="#"
+              th:action="@{/updateMedecin/{id}(id=${medecin.Med_ID})}"
+              th:object="${medecin}"
+              method="post">
+            <div class="form-group">
+                <input type="hidden" th:field="*{Med_ID}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="Med_Aggrement">Numéro d'Aggrément</label>
+                <input type="text" th:field="*{Med_Aggrement}" id="Med_Aggrement" placeholder="Med_Aggrement" class="form-control">
+                <span th:if="${#fields.hasErrors('Med_Aggrement')}" th:errors="*{Med_Aggrement}"></span>
+            </div>
+
+            <!--  CHOIX DE LA PERSONNE -->
+
+            <div class="form-group">
+                <label for="per">Personne :</label>
+                <select class="form-control" id="per" th:field="*{Personne}">
+                    <option value="">Select Personne</option>
+                    <option th:each="personne : ${listPersonne}" th:value="${personne.Per_ID}"
+                            th:text="${personne.Per_Prenom} + ' ' + ${personne.Per_Nom}">
+                    </option>
+                </select>
+                <small id="Per_IDHelp" class="form-text text-muted">Merci de choisir la Personne correspondante</small>
+            </div>
+
+            <input type="submit" value="Update Medecin">
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

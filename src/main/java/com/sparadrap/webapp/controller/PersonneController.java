@@ -1,6 +1,8 @@
 package com.sparadrap.webapp.controller;
 
+import com.sparadrap.webapp.model.Adresse;
 import com.sparadrap.webapp.repository.AdresseRepository;
+import com.sparadrap.webapp.service.AdresseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,9 @@ public class PersonneController {
 
 	@Autowired
 	private AdresseRepository adrRepo;
+
+	@Autowired
+	private AdresseService adresseService;
 	    
 	@GetMapping("/signupPersonne")
     public String showSignUpForm(Personne personne, Model model) {
@@ -55,8 +60,11 @@ public class PersonneController {
 	    @GetMapping("/editPersonne/{id}")
 	    public String showUpdateForm(@PathVariable("id") long id, Model model) {
 	    	Personne personne = personneService.getPersonne(id);
-	        
-	        model.addAttribute("personne", personne);
+
+			Iterable<Adresse> listAdresse = adresseService.getAdresse();
+			model.addAttribute("listAdresse", listAdresse);
+
+			model.addAttribute("personne", personne);
 	        return "form-update/formUpdatePersonne";
 	    }
 	    

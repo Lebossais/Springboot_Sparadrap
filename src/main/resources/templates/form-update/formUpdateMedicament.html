@@ -1,0 +1,65 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+<div class="container special">
+
+    <h2 class="h2">Modification d'un Médicament</h2>
+    <div>
+        <form action="#"
+              th:action="@{/updateMedicament/{id}(id=${medicament.Medi_ID})}"
+              th:object="${medicament}"
+              method="post">
+            <div class="form-group">
+                <input type="hidden" th:field="*{Medi_ID}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="Medi_Nom">Nom du Médicament</label>
+                <input type="text" th:field="*{Medi_Nom}" id="Medi_Nom" placeholder="Medi_Nom" class="form-control">
+                <span th:if="${#fields.hasErrors('Medi_Nom')}" th:errors="*{Medi_Nom}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Medi_Prix">Prix du Médicament</label>
+                <input type="text" th:field="*{Medi_Prix}" id="Medi_Prix" placeholder="Medi_Prix" class="form-control">
+                <span th:if="${#fields.hasErrors('Medi_Prix')}" th:errors="*{Medi_Prix}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="Medi_Date_Mise_Service">Date de Mise en Service</label>
+                <input type="text" th:field="*{Medi_Date_Mise_Service}" id="Medi_Date_Mise_Service" placeholder="Medi_Date_Mise_Service" class="form-control">
+                <span th:if="${#fields.hasErrors('Medi_Date_Mise_Service')}" th:errors="*{Medi_Date_Mise_Service}"></span>
+            </div>
+
+            <!--  CHOIX DE LA CATEGORIE  -->
+
+
+
+            <div class="form-group">
+                <label for="cat">Catégorie :</label>
+                <select class="form-control" id="cat" th:field="*{Categorie}">
+                    <option value="">Select Catégorie</option>
+                    <option th:each="categorie : ${listCategorie}" th:value="${categorie.Cat_ID}"
+                            th:text="${categorie.Cat_Categorie}">
+                    </option>
+                </select>
+                <small id="Cat_IDHelp" class="form-text text-muted">Merci de choisir la Catégorie du Médicament </small>
+            </div>
+
+            <input type="submit" value="Update Medicament">
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

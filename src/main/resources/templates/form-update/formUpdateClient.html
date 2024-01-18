@@ -4,39 +4,94 @@
 
 <div th:replace="~{navbar :: nav}"/>
 <div th:replace="~{navbar :: nav2}"/>
+<div class="container special">
 
-	<div class="container special" id="liste">
+    <h2 class="h2">Modification d'un Client</h2>
+    <div>
+        <form action="#"
+              th:action="@{/updateClient/{id}(id=${client.Cli_ID})}"
+              th:object="${client}"
+              method="post">
+            <div class="form-group">
+                <input type="hidden" th:field="*{Cli_ID}" class="form-control">
+            </div>
 
-		<h2 class="h2">Modification d'une Adresse</h2>
-		<div>
-			<form action="#" 
-  th:action="@{/updateAdresse/{id}(id=${adresse.Adr_ID})}" 
-  th:object="${adresse}" 
-  method="post">
-  <input type="hidden" th:field="*{Adr_ID}" class="form-control">
-    <label for="Adr_Numero_Rue">Numéro Rue</label>
-    <input type="text" th:field="*{Adr_Numero_Rue}" id="Adr_Numero_Rue" placeholder="Adr_Numero_Rue">
-    <span th:if="${#fields.hasErrors('Adr_Numero_Rue')}" th:errors="*{Adr_Numero_Rue}"></span>
-    <label for="Adr_Nom_Rue">Adr_Nom_Rue</label>
-    <input type="text" th:field="*{Adr_Nom_Rue}" id="Adr_Nom_Rue" placeholder="Adr_Nom_Rue">
-    <span th:if="${#fields.hasErrors('Adr_Nom_Rue')}" th:errors="*{Adr_Nom_Rue}"></span>
-    <label for="Adr_Code_Postal">Adr_Code_Postal</label>
-    <input type="text" th:field="*{Adr_Code_Postal}" id="Adr_Code_Postal" placeholder="Adr_Code_Postal">
-    <span th:if="${#fields.hasErrors('Adr_Code_Postal')}" th:errors="*{Adr_Code_Postal}"></span>
-    <label for="Adr_Ville">Adr_Ville</label>
-    <input type="text" th:field="*{Adr_Ville}" id="Adr_Ville" placeholder="Adr_Ville">
-    <span th:if="${#fields.hasErrors('Adr_Ville')}" th:errors="*{Adr_Ville}"></span>
-    <input type="submit" value="Update Adresse">   
-</form>
-		</div>
+            <div class="form-group">
+                <label for="Cli_Date_Naissance">Date de Naissance</label>
+                <input type="text" th:field="*{Cli_Date_Naissance}" id="Cli_Date_Naissance" placeholder="Cli_Date_Naissance" class="form-control">
+                <span th:if="${#fields.hasErrors('Cli_Date_Naissance')}" th:errors="*{Cli_Date_Naissance}"></span>
+            </div>
 
-	</div>
+            <div class="form-group">
+                <label for="Cli_Numero_Secu">Numéreo de Sécurité Sociale</label>
+                <input type="text" th:field="*{Cli_Numero_Secu}" id="Cli_Numero_Secu" placeholder="Cli_Numero_Secu" class="form-control">
+                <span th:if="${#fields.hasErrors('Cli_Numero_Secu')}" th:errors="*{Cli_Numero_Secu}"></span>
+            </div>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script>
+            <!--  CHOIX DE LA PERSONNE -->
+
+            <div class="form-group">
+                <label for="per">Personne :</label>
+                <select class="form-control" id="per" th:field="*{Personne}">
+                    <option value="">Select Personne</option>
+                    <option th:each="personne : ${listPersonne}" th:value="${personne.Per_ID}"
+                            th:text="${personne.Per_Prenom} + ' ' + ${personne.Per_Nom}">
+                    </option>
+                </select>
+                <small id="Per_IDHelp" class="form-text text-muted">Merci de choisir la Personne correspondante</small>
+            </div>
+
+            <!--  CHOIX DU MEDECIN -->
+
+            <div class="form-group">
+                <label for="med">Médecin :</label>
+                <select class="form-control" id="med" th:field="*{Medecin}">
+                    <option value="">Select Médecin</option>
+                    <option th:each="medecin : ${listMedecin}" th:value="${medecin.Med_ID}"
+                            th:text=" 'Dr ' + ${medecin.Personne.Per_Prenom} + ' ' +${medecin.Personne.Per_Nom}">
+                    </option>
+                </select>
+                <small id="Med_IDHelp" class="form-text text-muted">Merci de choisir le Médecin Traitant correspondant</small>
+            </div>
+
+            <!--  CHOIX DU SPECIALISTE SI IL Y EN A UN -->
+
+            <div class="form-group">
+                <label for="spe">Specialiste :</label>
+                <select class="form-control" id="spe" th:field="*{Specialiste}">
+                    <option value="">Select Specialiste</option>
+                    <option th:each="specialiste : ${listSpecialiste}" th:value="${specialiste.Spe_ID}"
+                            th:text=" 'Dr ' + ${specialiste.Personne.Per_Prenom} + ' ' +${specialiste.Personne.Per_Nom}">
+                    </option>
+                </select>
+                <small id="Spe_IDHelp" class="form-text text-muted">Merci de choisir le Spécialiste correspondant si il y en a un</small>
+            </div>
+
+            <!--  CHOIX DE LA MUTUELLE -->
+
+            <div class="form-group">
+                <label for="mut">Mutuelle :</label>
+                <select class="form-control" id="mut" th:field="*{Mutuelle}">
+                    <option value="">Select Mutuelle</option>
+                    <option th:each="mutuelle : ${listMutuelle}" th:value="${mutuelle.Mut_ID}"
+                            th:text="${mutuelle.Entreprise.Ent_Raison_Sociale}">
+                    </option>
+                </select>
+                <small id="Mut_IDHelp" class="form-text text-muted">Merci de choisir la Mutuelle du Client </small>
+            </div>
+
+
+            <input type="submit" value="Update Client">
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </body>
 </html>
