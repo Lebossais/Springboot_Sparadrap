@@ -24,7 +24,7 @@ function errorCallback(error) {
 
 // Fonction pour appeler OpenWeather API avec les coordonnées
 function callOpenWeatherAPI(latitude, longitude) {
-    const apiKey = '1640c4a6652fd98a3aee1004bff749c8';
+    const apiKey = '';
 
     // Construire l'URL de l'API OpenWeather avec les coordonnées
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
