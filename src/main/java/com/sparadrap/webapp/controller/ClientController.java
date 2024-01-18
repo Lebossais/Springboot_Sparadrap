@@ -55,7 +55,20 @@ public class ClientController {
 
 
 	@GetMapping("/signupClient")
-    public String showSignUpForm(Client client) {
+    public String showSignUpForm(Client client, Model model) {
+
+		Iterable<Personne> listPersonne = personneService.getPersonne();
+		model.addAttribute("listPersonne", listPersonne);
+
+		Iterable<Medecin> listMedecin = medecinService.getMedecin();
+		model.addAttribute("listMedecin", listMedecin);
+
+		Iterable<Specialiste> listSpecialiste = specialisteService.getSpecialiste();
+		model.addAttribute("listSpecialiste", listSpecialiste);
+
+		Iterable<Mutuelle> listMutuelle = mutuelleService.getMutuelle();
+		model.addAttribute("listMutuelle", listMutuelle);
+
         return "form-new/formNewClient";
     }
 	

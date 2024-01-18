@@ -49,12 +49,14 @@
             <!-- Faire une ComboBox du choix de l'Adresse. Ou choix de la création d'une nouvelle Adresse ? Idée Popup -->
 
             <div class="form-group">
-                           <select>
-                               <option th:each="adresse: ${listAdresse}"
-                                       th:text="${adresse.Adr_Numero_Rue} + ' ' +${adresse.Adr_Nom_Rue} + ' ' + ${adresse.Adr_Code_Postal} + ' ' + ${adresse.Adr_Ville}"
-                                       th:value="${Adr_ID}"></option>
-                           </select>
-                <small id="Adr_IDHelp" class="form-text text-muted">Merci de choisir l'Adresse de la Personne </small>
+                <label for="adr">Adresse :</label>
+                <select class="form-control" id="adr" th:field="*{Adresse}">
+                    <option value="">Select Adresse</option>
+                    <option th:each="adresse : ${listAdresse}" th:value="${adresse.Adr_ID}"
+                            th:text="${adresse.Adr_Numero_Rue} + ' ' + ${adresse.Adr_Nom_Rue} + ' ' + ${adresse.Adr_Code_Postal} + ' ' + ${adresse.Adr_Ville} ">
+                    </option>
+                </select>
+                <small id="Adr_IDHelp" class="form-text text-muted">Merci de choisir l'Adresse</small>
             </div>
 
             <button type="submit" class="btn btn-primary">Créer</button>

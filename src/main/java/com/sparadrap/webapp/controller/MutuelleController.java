@@ -34,14 +34,17 @@ public class MutuelleController {
 	private EntrepriseRepository mutRepo;
 	    
 	@GetMapping("/signupMutuelle")
-    public String showSignUpForm(Mutuelle mutuelle) {
-        return "formNewMutuelle";
+    public String showSignUpForm(Mutuelle mutuelle, Model model) {
+		Iterable<Entreprise> listEntreprise = entrepriseService.getEntreprise();
+		model.addAttribute("listEntreprise", listEntreprise);
+
+		return "form-new/formNewMutuelle";
     }
 	
 	    @PostMapping("/addMutuelle")
 	    public String addMutuelle(Mutuelle mutuelle, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	            return "formNewMutuelle";
+	            return "form-new/formNewMutuelle";
 	        }
 	        
 	        mutuelleService.saveMutuelle(mutuelle);

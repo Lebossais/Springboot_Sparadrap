@@ -34,8 +34,11 @@ public class MedicamentController {
 	private CategorieRepository catRepo;
 	    
 	@GetMapping("/signupMedicament")
-    public String showSignUpForm(Medicament medicament) {
-        return "form-new/formNewMedicament";
+    public String showSignUpForm(Medicament medicament, Model model) {
+		Iterable<Categorie> listCategorie = categorieService.getCategorie();
+		model.addAttribute("listCategorie", listCategorie);
+
+		return "form-new/formNewMedicament";
     }
 	
 	    @PostMapping("/addMedicament")

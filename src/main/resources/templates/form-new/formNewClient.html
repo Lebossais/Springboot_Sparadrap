@@ -25,14 +25,65 @@
 						id="Cli_Date_NaissanceHelp" class="form-text text-muted">Merci d'écrire la date de Naissance.</small> <!-- Remplacer par un choix de date d'un calend -->
 				</div>
 				<div class="form-group">
-					<label for="cli_numero_secuInput">Numéro de Securité Sociale</label>
+					<label for="Cli_Numero_SecuInput">Numéro de Securité Sociale</label>
 					<input
-							type="text" th:field="*{cli_numero_secu}" class="form-control" id="cli_numero_secuInput"
-							aria-describedby="cli_numero_secuHelp" placeholder="Saisir le numéro de Sécurité Sociale"> <small
-						id="cli_numero_secuHelp" class="form-text text-muted">Merci d'écrire le Numéro de Sécurité Sociale</small>
+							type="text" th:field="*{Cli_Numero_Secu}" class="form-control" id="Cli_Numero_SecuInput"
+							aria-describedby="Cli_Numero_SecuHelp" placeholder="Saisir le numéro de Sécurité Sociale"> <small
+						id="Cli_Numero_SecuHelp" class="form-text text-muted">Merci d'écrire le Numéro de Sécurité Sociale</small>
 				</div>
 
-				<!-- Choix du Medecin / Specialiste si il y a / Mutuelle / Récupération aussi de l'id de Personne précèdemment fait-->
+				<!--  CHOIX DE LA PERSONNE -->
+
+				<div class="form-group">
+					<label for="per">Personne :</label>
+					<select class="form-control" id="per"  th:field="*{Personne}">
+						<option value="">Select Personne</option>
+						<option th:each="personne : ${listPersonne}" th:value="${personne.Per_ID}"
+								th:text="${personne.Per_Prenom} + ' ' + ${personne.Per_Nom}">
+						</option>
+					</select>
+					<small id="Per_IDHelp" class="form-text text-muted">Merci de choisir la Personne correspondante</small>
+				</div>
+
+				<!--  CHOIX DU MEDECIN -->
+
+				<div class="form-group">
+					<label for="med">Médecin :</label>
+					<select class="form-control" id="med"  th:field="*{Medecin}">
+						<option value="">Select Médecin</option>
+						<option th:each="medecin : ${listMedecin}" th:value="${medecin.Med_ID}"
+								th:text=" 'Dr ' + ${medecin.Personne.Per_Prenom} + ' ' +${medecin.Personne.Per_Nom}">
+						</option>
+					</select>
+					<small id="Med_IDHelp" class="form-text text-muted">Merci de choisir le Médecin Traitant correspondant</small>
+				</div>
+
+				<!--  CHOIX DU SPECIALISTE SI IL Y EN A UN -->
+
+				<div class="form-group">
+					<label for="spe">Specialiste :</label>
+					<select class="form-control" id="spe"  th:field="*{Specialiste}">
+						<option value="">Select Specialiste</option>
+						<option th:each="specialiste : ${listSpecialiste}" th:value="${specialiste.Spe_ID}"
+								th:text=" 'Dr ' + ${specialiste.Personne.Per_Prenom} + ' ' +${specialiste.Personne.Per_Nom}">
+						</option>
+						<option value=""></option>
+					</select>
+					<small id="Spe_IDHelp" class="form-text text-muted">Merci de choisir le Spécialiste correspondant si il y en a un</small>
+				</div>
+
+				<!--  CHOIX DE LA MUTUELLE -->
+
+				<div class="form-group">
+					<label for="mut">Mutuelle :</label>
+					<select class="form-control" id="mut"  th:field="*{Mutuelle}">
+						<option value="">Select Mutuelle</option>
+						<option th:each="mutuelle : ${listMutuelle}" th:value="${mutuelle.Mut_ID}"
+								th:text="${mutuelle.Entreprise.Ent_Raison_Sociale}">
+						</option>
+					</select>
+					<small id="Mut_IDHelp" class="form-text text-muted">Merci de choisir la Mutuelle du Client </small>
+				</div>
 				
 				<button type="submit" class="btn btn-primary">Créer</button>
 			</form>

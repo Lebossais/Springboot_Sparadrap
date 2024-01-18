@@ -1,0 +1,69 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+
+<div class="container special">
+
+    <h2 class="h2">Ajout d'une nouvelle Mutuelle</h2>
+    <div>
+        <form method="post"
+              th:action="@{/addMedicament}" th:object="${medicament}">
+            <div class="form-group">
+                <input
+                        type="hidden" th:field="*{Medi_ID}" class="form-control">
+            </div>
+
+            <!-- Faire une ComboBox du choix de la personne. Ou choix de la création d'une nouvelle Personne ? Idée Popup -->
+
+            <div class="form-group">
+                <label for="Medi_NomInput">Nom du Médicament</label>
+                <input
+                        type="text" th:field="*{Medi_Nom}" class="form-control" id="Medi_NomInput"
+                        aria-describedby="Medi_NomHelp" placeholder="Saisir le Nom du Médicament"> <small
+                    id="Medi_NomHelp" class="form-text text-muted">Merci d'écrire le Nom du Médicament</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Medi_PrixInput">Prix</label>
+                <input
+                        type="text" th:field="*{Medi_Prix}" class="form-control" id="Medi_PrixInput"
+                        aria-describedby="Medi_PrixHelp" placeholder="Saisir le Prix du Médicament"> <small
+                    id="Medi_PrixHelp" class="form-text text-muted">Merci d'écrire le Prix du Médicament</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Medi_Date_Mise_ServiceInput">Date de Mise en Service</label>
+                <input
+                        type="text" th:field="*{Medi_Date_Mise_Service}" class="form-control" id="Medi_Date_Mise_ServiceInput"
+                        aria-describedby="Medi_Date_Mise_ServiceHelp" placeholder="Saisir la Date de Mise en Service"> <small
+                    id="Medi_Date_Mise_ServiceHelp" class="form-text text-muted">Merci d'écrire la Date de Mise en Service</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Cat">Catégorie :</label>
+                <select class="form-control" id="Cat" th:field="*{Categorie}">
+                    <option value="">Select Catégorie</option>
+                    <option th:each="categorie : ${listCategorie}" th:value="${categorie.Cat_ID}"
+                            th:text="${categorie.Cat_Categorie}">
+                    </option>
+                </select>
+                <small id="Cat_IDHelp" class="form-text text-muted">Merci de choisir la Catégorie du Médicament </small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

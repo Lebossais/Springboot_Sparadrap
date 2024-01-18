@@ -1,0 +1,61 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+
+<div class="container special">
+
+    <h2 class="h2">Ajout d'une nouvelle Mutuelle</h2>
+    <div>
+        <form method="post"
+              th:action="@{/addMutuelle}" th:object="${mutuelle}">
+            <div class="form-group">
+                <input
+                        type="hidden" th:field="*{Mut_ID}" class="form-control">
+            </div>
+
+            <!-- Faire une ComboBox du choix de la personne. Ou choix de la création d'une nouvelle Personne ? Idée Popup -->
+
+            <div class="form-group">
+                <label for="mut">Mutuelle :</label>
+                <select class="form-control" id="mut"  th:field="*{Entreprise}">
+                    <option value="">Select Mutuelle</option>
+                    <option th:each="entreprise : ${listEntreprise}" th:value="${entreprise.Ent_ID}"
+                            th:text="${entreprise.Ent_Raison_Sociale}">
+                    </option>
+                </select>
+                <small id="Ent_IDHelp" class="form-text text-muted">Merci de choisir l'Entreprise de la Mutuelle</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Mut_DepartementInput">Département de référence</label>
+                <input
+                        type="text" th:field="*{Mut_Departement}" class="form-control" id="Mut_DepartementInput"
+                        aria-describedby="Mut_DepartementHelp" placeholder="Saisir le département de référence"> <small
+                    id="Mut_DepartementHelp" class="form-text text-muted">Merci d'écrire le Département de référence</small>
+            </div>
+
+            <div class="form-group">
+                <label for="Mut_Prise_En_ChargeInput">Prise en Charge</label>
+                <input
+                        type="text" th:field="*{Mut_Prise_En_Charge}" class="form-control" id="Mut_Prise_En_ChargeInput"
+                        aria-describedby="Mut_Prise_En_ChargeHelp" placeholder="Saisir la Spécialité du Spécialiste"> <small
+                    id="Mut_Prise_En_ChargeHelp" class="form-text text-muted">Merci d'écrire la Prise en Charge de la Mutuelle</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

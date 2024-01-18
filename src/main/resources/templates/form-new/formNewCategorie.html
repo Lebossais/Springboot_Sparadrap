@@ -1,0 +1,40 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+
+<div class="container special">
+
+    <h2 class="h2">Ajout d'une nouvelle Mutuelle</h2>
+    <div>
+        <form method="post"
+              th:action="@{/addCategorie}" th:object="${categorie}">
+            <div class="form-group">
+                <input
+                        type="hidden" th:field="*{Cat_ID}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="Cat_CategorieInput">Nom de la Catégorie</label>
+                <input
+                        type="text" th:field="*{Cat_Categorie}" class="form-control" id="Cat_CategorieInput"
+                        aria-describedby="Cat_CategorieHelp" placeholder="Saisir la Catégorie"> <small
+                    id="Cat_CategorieHelp" class="form-text text-muted">Merci d'écrire la Catégorie</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

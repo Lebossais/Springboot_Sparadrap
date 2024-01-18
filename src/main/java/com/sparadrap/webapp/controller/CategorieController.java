@@ -26,13 +26,13 @@ public class CategorieController {
 	    
 	@GetMapping("/signupCategorie")
     public String showSignUpForm(Categorie categorie) {
-        return "formNewCategorie";
+        return "form-new/formNewCategorie";
     }
 	
 	    @PostMapping("/addCategorie")
 	    public String addCategorie(Categorie categorie, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	            return "formNewCategorie";
+	            return "form-new/formNewCategorie";
 	        }
 	        
 	        categorieService.saveCategorie(categorie);
