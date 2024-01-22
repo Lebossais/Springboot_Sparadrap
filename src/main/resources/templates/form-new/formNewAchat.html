@@ -1,0 +1,65 @@
+<head th:replace="~{header :: head}"/>
+
+<body>
+
+<div th:replace="~{navbar :: nav}"/>
+<div th:replace="~{navbar :: nav2}"/>
+
+<!-- Suit la création ou le choix d'une Personne -->
+
+<div class="container special">
+
+    <h2 class="h2">Ajout d'un nouvel Achat</h2>
+    <div>
+        <form method="post"
+              th:action="@{/addAchat}" th:object="${achat}">
+            <div class="form-group">
+                <input
+                        type="hidden" th:field="*{Achat_ID}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="time"> Date </label>
+                <input type="text" th:field="*{Achat_Date}" class="form-control" id="time" disabled/>
+                <small id="Achat_DateHelp" class="form-text text-muted">Date et heure du Jour</small>
+            </div>
+
+            <!--  CHOIX DU CLIENT -->
+
+            <div class="form-group">
+                <label for="cli">Client :</label>
+                <select class="form-control" id="cli"  th:field="*{Client}">
+                    <option value="">Select Client</option>
+                    <option th:each="client : ${listClient}" th:value="${client.Cli_ID}"
+                            th:text="${client.Personne.Per_Prenom} + ' ' + ${client.Personne.Per_Nom}">
+                    </option>
+                </select>
+                <small id="Cli_IDHelp" class="form-text text-muted">Merci de choisir le Client correspondant</small>
+            </div>
+
+            <!-- CHOIX ORDONNANCE -->
+
+            <div class="form-group">
+                <label for="ord">Client :</label>
+                <select class="form-control" id="ord"  th:field="*{Ordonnance}">
+                    <option value="">Pas d'Ordonnance</option>
+                    <option th:each="ordonnance : ${listOrdonnance}" th:value="${ordonnance.Ord_ID}"
+                            th:text="${ordonnance.Ord_Num}">
+                    </option>
+                </select>
+                <small id="Per_IDHelp" class="form-text text-muted">Merci de choisir l'Ordonnance correspondante</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Créer</button>
+        </form>
+    </div>
+
+</div>
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -12,6 +12,13 @@
         <h2 class="h2">Date et Heure</h2>
         <input type="text" class="choix" id="time" disabled/>
 
+        <h2 class="h2" style="font-size: 200%">Client</h2>
+        <select class="choix">
+            <option th:each="client: ${listClient}"
+                    th:text="${client.Personne.Per_Prenom} + ' ' + ${client.Personne.Per_Nom}"
+                    th:value="${Cli_ID}"></option>
+        </select><br>
+
         <h2 class="h2" style="font-size: 200%">Medecin</h2>
         <select class="choix">
             <option th:each="medecin: ${listMedecin}"
@@ -25,14 +32,8 @@
                     th:text=" Dr +' ' + ${specialiste.Personne.Per_Prenom} + ' ' + ${specialiste.Personne.Per_Nom}"
                     th:value="${Spe_ID}"></option>
         </select><br>
-
-        <h2 class="h2" style="font-size: 200%">Client</h2>
-        <select class="choix">
-            <option th:each="client: ${listClient}"
-                    th:text="${client.Personne.Per_Prenom} + ' ' + ${client.Personne.Per_Nom}"
-                    th:value="${Cli_ID}"></option>
-        </select><br>
     </div>
+
 
     <div class="ligne2">
 
@@ -48,6 +49,7 @@
                             <th>Nom du Médicament</th>
                             <th>Prix du médicament</th>
                             <th>Catégorie</th>
+                            <th> </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -92,10 +94,9 @@
         <div class="titre">
             <button class="valid"> VALIDATION</button>
         </div>
+
     </div>
 </div>
-
-
 
 
 <script
@@ -109,4 +110,3 @@
         src="/js/panier.js"></script>
 
 </body>
-</html>
