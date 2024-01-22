@@ -1,0 +1,9 @@
+body{
+    display: grid;
+    background-color: black;
+}
+
+img{
+    place-self: center;
+    margin-top: 10%;
+}
