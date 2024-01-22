@@ -13,4 +13,3 @@ public class CustomProperties {
 	private String apiUrl;
 	
 }
-
