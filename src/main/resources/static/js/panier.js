@@ -4,6 +4,7 @@ const buttons = document.querySelectorAll('.ajouterPanier');
 
 buttons.forEach(button => {
     button.addEventListener('click', event => {
+        event.preventDefault()
         const row = event.target.closest('tr');
 
         const nomMedicament = row.querySelector('td:nth-child(1) span').innerText;
@@ -72,7 +73,7 @@ function runClock()
     var hours   = today.getHours();
     var minutes = today.getMinutes();
     var seconds = today.getSeconds();
-    var timeValue = date + '  -  ' + hours;
+    var timeValue = date + ' - ' + hours;
 
     // Les deux prochaines conditions ne servent que pour l'affichage.
     // Si le nombre de minutes est inférieur à 10, alors on ajoute un 0 devant...
@@ -84,3 +85,54 @@ function runClock()
 }
 
 var timerID = setInterval(runClock,1000);
+
+
+// Gestion de l'Achat
+
+ var validbutton = document.getElementById('validbutton');
+ validbutton.addEventListener('click', event =>  {
+     function validateForms() {
+         var achatForm = document.getElementById('achatForm');
+         var panierForm = document.getElementById('panierForm');
+
+         if (validateAchatForm()) {
+         achatForm.submit();
+    }
+
+        if (validatePanierForm()) {
+        panierForm.submit();
+        }
+    }
+
+        function validateAchatForm() {
+            var clientSelect = document.getElementById('clientSelect');
+
+            if (clientSelect.value === "") {
+                alert("Veuillez sélectionner un client.");
+                return false;
+            }
+
+        return true;
+    }
+
+        function validatePanierForm() {
+
+        var panierBody = document.getElementById('panierBody');
+            var rows = panierBody.getElementsByTagName('tr');
+
+            if (rows.length <= 1) {
+                alert("Votre panier est vide.");
+                return false;
+            }
+
+            return true;
+    }
+
+ })
+
+document.addEventListener('DOMContentLoaded', function() {
+    let today = new Date().toISOString().slice(0, 10);
+    let dateInput = document.getElementById('dateInput');
+
+    dateInput.value = today;
+});

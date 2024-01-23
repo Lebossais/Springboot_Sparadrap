@@ -6,17 +6,26 @@
 <div th:replace="~{navbar :: nav2}"/>
 
 
+<form id="achatForm" method="post"
+      th:action="@{/addAchat}" th:object="${achat}">
+
 <div class="tab2">
     <div class="colonne1">
 
+        <input type="text" th:field="*{achatid}" hidden class="form-control">
+
         <h2 class="h2">Date et Heure</h2>
-        <input type="text" class="choix" id="time" disabled/>
+        <input type="text" class="choix" id="time" disabled />
+
+        <input type="text"  th:field="*{Achat_Date}"
+               class="form-control" id="dateInput" hidden>
 
         <h2 class="h2" style="font-size: 200%">Client</h2>
-        <select class="choix">
-            <option th:each="client: ${listClient}"
-                    th:text="${client.Personne.Per_Prenom} + ' ' + ${client.Personne.Per_Nom}"
-                    th:value="${Cli_ID}"></option>
+        <select class="form-control" id="cli"  th:field="*{Client}">
+            <option value="">Select Client</option>
+            <option th:each="client : ${listClient}" th:value="${client.Cli_ID}"
+                    th:text="${client.Personne.Per_Prenom} + ' ' + ${client.Personne.Per_Nom}">
+            </option>
         </select><br>
 
         <h2 class="h2" style="font-size: 200%">Medecin</h2>
@@ -91,13 +100,13 @@
                 </tbody>
             </table>
         </div>
-        <div class="titre">
-            <button class="valid"> VALIDATION</button>
-        </div>
 
+        <div class="titre">
+            <button id="validbutton" class="valid"> VALIDATION</button>
+        </div>
     </div>
 </div>
-
+</form>
 
 <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -8,15 +8,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
+import java.sql.Date;
+
 @Data
 @Entity
 public class Achat {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Achat_ID;
-	
-	private String Achat_Date;
+	@JoinColumn(name="Achat_ID")
+	private Long achatid;
+
+	private Date Achat_Date;
 
 	@ManyToOne
 	@JoinColumn(name="Cli_ID")

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import lombok.Data;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 @Data
 @Controller
 public class AchatController {
@@ -53,8 +56,10 @@ public class AchatController {
 	@Autowired
 	private PanierService panierService;
 
+	private final static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
 	@GetMapping("/newAchat")
-    public String showSignUpForm(Achat achat, Model model) {
+    public String showSignUpForm(Achat achat, Model model) throws ParseException {
 		Iterable<Medecin> listMedecin = medecinService.getMedecin();
 		model.addAttribute("listMedecin", listMedecin);
 
@@ -70,6 +75,8 @@ public class AchatController {
 		Iterable<Panier> listPanier = panierService.getPanier();
 		model.addAttribute("listPanier", listPanier);
 
+		model.addAttribute("exampleDate", sdf.parse("20/06/2020"));
+
 		return "new-achat";
     }
 	
@@ -80,7 +87,7 @@ public class AchatController {
 	        }
 	        
 	        achatService.saveAchat(achat);
-	        return "redirect:/home";
+	        return "redirect:/signupPanier";
 	    }
 	    
 	    @GetMapping("/listAchat")
@@ -103,7 +110,7 @@ public class AchatController {
 	    public String updateAdresse(@PathVariable("id") long id, Achat achat, 
 	      BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	            achat.setAchat_ID(id);
+	            achat.setAchatid(id);
 	            return "formUpdateAchat";
 	        }
 	            
