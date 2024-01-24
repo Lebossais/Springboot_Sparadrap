@@ -5,7 +5,8 @@ target/
 !**/src/test/**/target/
 
 
-src/main/resources/static/js/geolocalisation.js
+*.application.properties
+*.geolocalisation.js
 
 ### STS ###
 .apt_generated
