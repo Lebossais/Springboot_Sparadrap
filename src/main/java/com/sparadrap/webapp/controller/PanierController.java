@@ -2,8 +2,10 @@ package com.sparadrap.webapp.controller;
 
 import com.sparadrap.webapp.model.Achat;
 import com.sparadrap.webapp.model.Adresse;
+import com.sparadrap.webapp.model.Medicament;
 import com.sparadrap.webapp.model.Panier;
 import com.sparadrap.webapp.repository.AchatRepository;
+import com.sparadrap.webapp.repository.MedicamentRepository;
 import com.sparadrap.webapp.repository.PanierRepository;
 import com.sparadrap.webapp.service.AchatService;
 import com.sparadrap.webapp.service.PanierService;
@@ -15,6 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
 
 @Data
 @Controller
@@ -32,6 +36,9 @@ public class PanierController {
     @Autowired
     AchatRepository achatRepository;
 
+    @Autowired
+    MedicamentRepository medicamentRepository;
+
     @GetMapping("/signupPanier")
     public String showSignUpForm(Panier panier, Model model) {
         Iterable<Achat> listAchat = achatService.getAchat();
@@ -39,6 +46,9 @@ public class PanierController {
 
         Achat achat = achatRepository.findTopByOrderByAchatidDesc();
         model.addAttribute("achatid", achat);
+
+        Optional<Medicament> medicament=medicamentRepository.findById(panier.getMedicament().getMedi_ID());
+        medicament.ifPresent(panier::setMedicament);
         return "form-new/formNewAchat";
     }
 

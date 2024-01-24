@@ -66,6 +66,7 @@
                             <td colspan="3">Aucun Médicament en base de données</td>
                         </tr>
                         <tr th:each="medicament: ${listMedicament}">
+                            <td hidden><span th:text="${medicament.Medi_ID}" hidden></span></td>
                             <td><span th:text="${medicament.Medi_Nom}"> Nom du Médicament </span></td>
                             <td><span th:text="${medicament.Medi_Prix} + '.00 €'"> Prix de la boîte </span></td>
                             <td><span th:text="${medicament.Categorie.Cat_Categorie}"> Catégorie </span></td>

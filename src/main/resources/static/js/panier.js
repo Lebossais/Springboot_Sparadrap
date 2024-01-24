@@ -7,10 +7,12 @@ buttons.forEach(button => {
         event.preventDefault()
         const row = event.target.closest('tr');
 
-        const nomMedicament = row.querySelector('td:nth-child(1) span').innerText;
-        const prixMedicament = parseFloat(row.querySelector('td:nth-child(2) span').innerText);
+        const idMedicament = parseFloat(row.querySelector('td:nth-child(1)').innerText);
+        const nomMedicament = row.querySelector('td:nth-child(2) span').innerText;
+        const prixMedicament = parseFloat(row.querySelector('td:nth-child(3) span').innerText);
 
         const medicamentToAdd = {
+            Medi_ID: idMedicament,
             Medi_Nom: nomMedicament,
             Medi_Prix: prixMedicament,
             quantity: 1

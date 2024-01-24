@@ -14,7 +14,9 @@
     <form method="post"
           th:action="@{/addPanier}" th:object="${panier}">
 
-        <input type="text" th:value="${achatid.getAchatid()}" th:field="*{Achat}">
+        <input type="text" th:value="${achatid.getAchatid()}" id="idRecup">
+
+        <input type="text" th:field="*{Achat}" id="idInput">
 
     <div class="tabPanier">
         <table id="panierTable" class="table table-bordered">
@@ -38,7 +40,9 @@
     <div class="titre">
         <button id="validbutton" class="valid"> VALIDATION</button>
     </div>
+    </form>
 </div>
+
 
 <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
